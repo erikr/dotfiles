@@ -19,7 +19,7 @@ alias emptytrash="sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl
 # Linux-only aliases
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
-    alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove && sudo apt clean; conda update --all"
+    alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove && sudo apt clean; conda update --all && conda clean -a"
 
     # -l: long format
     # -F: displays slash after directory, etc.
@@ -41,7 +41,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
 else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
 
-    alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; sudo gem update --system; sudo gem update; sudo gem cleanup; conda update --all; brew update; brew upgrade; brew cleanup; brew doctor; conda update --all"
+    alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; sudo gem update --system; sudo gem update; sudo gem cleanup; conda update --all; brew update; brew upgrade; brew cleanup; brew doctor; conda update --all; conda clean -a"
 
     # --group-directories-first: self-explanatory
     # --color=auto: use colors
