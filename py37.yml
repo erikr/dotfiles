@@ -1,0 +1,17 @@
+name: py37
+channels:
+  - ralexx
+  - anaconda
+  - conda-forge
+  - defaults
+dependencies:
+  - xgboost
+  - tensorflow-gpu
+  - pandas
+  - numpy
+  - scikit-learn
+  - beautifulsoup4
+  - h5py
+  - imbalanced-learn
+  - ruptures
+  - scikit-learn
