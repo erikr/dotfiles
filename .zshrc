@@ -139,7 +139,7 @@ source $HOME/.aliases
 #esac
 
 
-#CONDA_CUSTOM_ENV="py37"
+CONDA_CUSTOM_ENV="py37"
 
 # ERISOne scripts
 if [[ $HOSTNAME = *research.partners.org ]] || [[ $HOSTNAME = cmu* ]]; then
@@ -150,24 +150,14 @@ if [[ $HOSTNAME = *research.partners.org ]] || [[ $HOSTNAME = cmu* ]]; then
 
     # Set up modules
     module purge
-    #module load anaconda
     module load vim/8.1-pyvim
-
-    ## Activate custom conda environment
-    #source activate $CONDA_CUSTOM_ENV
-
-# Non-ERISOne scripts
-else
-    source $HOME/anaconda3/etc/profile.d/conda.sh
-
-    # If we use tmux, we need to deactivate and reactivate conda, see
-    # https://github.com/conda/conda/issues/6826
-    [[ -z $TMUX ]] || conda deactivate
-    conda activate $CONDA_CUSTOM_ENV
 fi
 
 # https://conda.io/projects/conda/en/latest/user-guide/troubleshooting.html#resolution-for-python-packages-make-sure-you-have-not-set-the-pythonpath-or-pythonhome-variable
 unset PYTHONPATH
+
+source $HOME/anaconda3/etc/profile.d/conda.sh
+[[ -z $TMUX ]] || conda deactivate; conda activate $CONDA_CUSTOM_ENV
 
 export PATH="/usr/local/sbin:$PATH"
 
