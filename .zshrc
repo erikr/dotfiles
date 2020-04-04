@@ -22,8 +22,7 @@ setopt extended_glob
 ZSH_THEME="typewritten/typewritten"
 
 # Enable multine typewritten theme
-#export TYPEWRITTEN_MULTILINE=false
-export TYPEWRITTEN_SINGLELINE_VERBOSE=true
+export TYPEWRITTEN_PROMPT_LAYOUT='singleline_verbose'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
