@@ -139,7 +139,6 @@ source $HOME/.aliases
 #esac
 
 
-CONDA_CUSTOM_ENV="py37"
 
 # ERISOne scripts
 if [[ $HOSTNAME = *research.partners.org ]] || [[ $HOSTNAME = cmu* ]]; then
@@ -156,8 +155,10 @@ fi
 # https://conda.io/projects/conda/en/latest/user-guide/troubleshooting.html#resolution-for-python-packages-make-sure-you-have-not-set-the-pythonpath-or-pythonhome-variable
 unset PYTHONPATH
 
+# Set up conda and activate custom environment
 source $HOME/anaconda3/etc/profile.d/conda.sh
-[[ -z $TMUX ]] || conda deactivate; conda activate $CONDA_CUSTOM_ENV
+CONDA_CUSTOM_ENV="py37"
+conda deactivate; conda activate $CONDA_CUSTOM_ENV
 
 export PATH="/usr/local/sbin:$PATH"
 
