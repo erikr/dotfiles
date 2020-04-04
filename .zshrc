@@ -138,27 +138,32 @@ case "$OSTYPE" in
     ;;
 esac
 
+
+CONDA_CUSTOM_ENV="py37"
+
 # ERISOne scripts
 if [[ $HOSTNAME = *research.partners.org ]] || [[ $HOSTNAME = cmu* ]]; then
-    echo ".zshrc called! Setting up ERISOne"
+    echo "Setting up .zshrc on ERISOne"
     
     # Update LD_LIBRARY_PATH so tmux can see custom-installed libevent stuff
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HOME}/local/lib
 
     # Set up Anaconda
-    CONDA_CUSTOM_ENV="py37_erisone"
     module load anaconda
+    module load vim/8.1-pyvim
     
-    # If Conda enviroment is not activated, do it once
+    ## If Conda enviroment is not activated, do it once
     PYTHON_VER=$(python --version 2>&1)
     if [[ "$PYTHON_VER" != *"Python 3"* ]]; then
-        echo "Python 2x detected. Activating conda: ${CONDA_CUSTOM_ENV}"
+        echo "Python 2x detected. Calling source activate ${CONDA_CUSTOM_ENV}"
         source activate $CONDA_CUSTOM_ENV
     fi
 
+    [[ -z $TMUX ]] || conda deactivate
+    conda activate $CONDA_CUSTOM_ENV
+
 # Non-ERISOne scripts
 else
-    CONDA_CUSTOM_ENV="py37"
     source $HOME/anaconda3/etc/profile.d/conda.sh
 
     # If we use tmux, we need to deactivate and reactivate conda, see
@@ -166,6 +171,9 @@ else
     [[ -z $TMUX ]] || conda deactivate
     conda activate $CONDA_CUSTOM_ENV
 fi
+
+# https://conda.io/projects/conda/en/latest/user-guide/troubleshooting.html#resolution-for-python-packages-make-sure-you-have-not-set-the-pythonpath-or-pythonhome-variable
+unset PYTHONPATH
 
 export PATH="/usr/local/sbin:$PATH"
 

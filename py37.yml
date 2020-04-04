@@ -5,13 +5,12 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - python=3.7
   - xgboost
   - tensorflow-gpu
   - pandas
   - numpy
   - scikit-learn
-  - beautifulsoup4
   - h5py
   - imbalanced-learn
   - ruptures
-  - scikit-learn
