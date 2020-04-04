@@ -148,19 +148,13 @@ if [[ $HOSTNAME = *research.partners.org ]] || [[ $HOSTNAME = cmu* ]]; then
     # Update LD_LIBRARY_PATH so tmux can see custom-installed libevent stuff
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HOME}/local/lib
 
-    # Set up Anaconda
+    # Set up modules
+    module purge
     module load anaconda
     module load vim/8.1-pyvim
-    
-    ## If Conda enviroment is not activated, do it once
-    PYTHON_VER=$(python --version 2>&1)
-    if [[ "$PYTHON_VER" != *"Python 3"* ]]; then
-        echo "Python 2x detected. Calling source activate ${CONDA_CUSTOM_ENV}"
-        source activate $CONDA_CUSTOM_ENV
-    fi
 
-    [[ -z $TMUX ]] || conda deactivate
-    conda activate $CONDA_CUSTOM_ENV
+    # Activate custom conda environment
+    source activate $CONDA_CUSTOM_ENV
 
 # Non-ERISOne scripts
 else
