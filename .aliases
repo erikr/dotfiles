@@ -1,0 +1,97 @@
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
+
+# Clean up LaunchServices to remove duplicates in the “Open With” menu
+alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
+
+# Recursively delete `.DS_Store` and `Icon^M` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete && find . -name 'Icon' -ls -delete"
+
+# Empty the Trash on all mounted volumes and the main HDD.
+# Also, clear Apple’s System Logs to improve shell startup speed.
+# Finally, clear download history from quarantine. https://mths.be/bum
+alias emptytrash="sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
+
+# Linux-only aliases
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+
+    alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove && sudo apt clean; conda update --all"
+
+    # -l: long format
+    # -F: displays slash after directory, etc.
+    # -h: human-readable unit suffixes
+    # -N: print literals and avoid quotes
+    # ${colorflag}: prints OS-specific colors (see above)
+    # --group-directories-first: dirs come first
+    alias l="ls -lFhN ${colorflag} --group-directories-first"
+
+    # Xclip to copy text from terminal to clipboard in Ubuntu
+	alias pbcopy='xclip -sel clip'
+	alias pbpaste='xclip -o'
+
+    # Navigation aliases to MAD3 server;
+    # if not mounted, calls shell script to mount
+    # then attempts to change dir to mount point
+    alias mad3cdac='mountpoint -q /media/mad3cdac || sh ~/repos/dotfiles/mount-mad3.sh && cd /media/mad3cdac/projects/partners_ecg'
+
+
+else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
+
+    alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; sudo gem update --system; sudo gem update; sudo gem cleanup; conda update --all; brew update; brew upgrade; brew cleanup; brew doctor; conda update --all"
+
+    # --group-directories-first: self-explanatory
+    # --color=auto: use colors
+    # -N: print literals and avoid quotes
+    alias ls='gls --color=auto --group-directories-first -N'
+
+    # -l: long format
+    # -F: displays slash after directory, etc.
+    # -h: human-readable unit suffixes
+    alias l="ls -lh"
+
+	alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+    alias mad3cdac='/volumes/MGH-NEURO-CDAC/projects/partners_ecg'
+    alias js="jekyll serve"
+    alias cpwd="pwd | tr -d '\n' | pbcopy"
+
+    # Save GitHub recovery code to clipboard
+    alias ghpw="cat /Users/er498/Dropbox\ \(Partners\ HealthCare\)/tokens-and-backups/github-personal-access-token.txt | pbcopy"
+
+    # Rebuild icon cache in macOS
+    alias rebuildicons="sudo rm -rfv /Library/Caches/com.apple.iconservices.store; sudo find /private/var/folders/ \( -name com.apple.dock.iconcache -or -name com.apple.iconservices \) -exec rm -rfv {} \; ; sleep 3;sudo touch /Applications/* ; killall Dock; killall Finder"
+
+    # Re-index everything in Spotlight
+    alias rebuildspotlight="sudo mdutil -E /"
+fi
+
+alias gd='cd ~/googledrive'
+alias db="cd ~/Dropbox\ \(Partners\ HealthCare\)"
+alias dl='cd ~/Downloads'
+alias dt='cd ~/Desktop'
+alias repos='cd ~/repos'
+alias blog='cd ~/repos/erikr.github.io'
+alias dotfiles='cd ~/repos/dotfiles'
+alias ml4cvd='cd ~/repos/ml/'
+
+# Shell scripts and utilities
+alias compiletex='sh ~/repos/dotfiles/compiletex.sh'
+alias lowercase="sh ~/repos/dotfiles/lowercase.sh"
+alias gsa="sh ~/repos/dotfiles/gsa.sh"
+alias convertCR2toJPG="sh ~/repos/dotfiles/convertCR2toJPG.sh"
+alias replacespaces="sh ~/repos/dotfiles/replaceSpaces.sh"
+
+function prettycsv {
+    perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
+}
+
+# Jupyter remote on Mithril
+remote_user="er498"
+remote_machine="mithril"
+PORT=3745
+alias remote_notebook_start='ssh -f ${remote_user}@${remote_machine} ". ~/.zshrc; jupyter-lab --no-browser --port=${PORT}"'
+alias remote_notebook_stop='ssh ${remote_user}@${remote_machine} "pkill -u ${remote_user} jupyter"'
+alias port_forward='ssh -N -f -L localhost:${PORT}:localhost:${PORT} ${remote_user}@${remote_machine}; open http://localhost:${PORT} &'

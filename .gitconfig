@@ -1,0 +1,9 @@
+[credential]
+	helper = osxkeychain
+[user]
+	email = ereinertsen@mgh.harvard.edu
+	name = Erik Reinertsen
+[color]
+    ui = auto
+[core]
+	excludesfile = /Users/er498/.gitignore
