@@ -7,7 +7,7 @@ channels:
 dependencies:
   - python=3.7
   - xgboost
-  - tensorflow-gpu
+  - tensorflow
   - pandas
   - numpy
   - scikit-learn

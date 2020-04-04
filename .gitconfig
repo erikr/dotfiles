@@ -6,4 +6,4 @@
 [color]
     ui = auto
 [core]
-	excludesfile = /Users/er498/.gitignore
+	excludesfile = /PHShome/er498/.gitignore_global
