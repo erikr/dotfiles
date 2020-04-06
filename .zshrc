@@ -180,4 +180,4 @@ CORRECT_IGNORE_FILE=".ssh"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 
 # Refresh global .gitignore
-git config --global core.excludesfile ~/.gitignore_global
+git config --global core.excludesfile ~/.gitignore
