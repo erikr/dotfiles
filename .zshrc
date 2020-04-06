@@ -87,58 +87,34 @@ export EDITOR=$(which vim)
 # Source aliases
 source $HOME/.aliases
 
-## OS-dependent aliases
-#case "$OSTYPE" in
-#    # Linux
-#    linux*)
-#    
-#    # Set up directory colors via https://github.com/seebi/dircolors-solarized
-#    eval `dircolors ~/.dir_colors`
-#
-#    # >>> conda initialize >>>
-#    # !! Contents within this block are managed by 'conda init' !!
-#    __conda_setup="$('/home/$USER/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-#    if [ $? -eq 0 ]; then
-#        eval "$__conda_setup"
-#    else
-#        if [ -f "/home/$USER/anaconda3/etc/profile.d/conda.sh" ]; then
-## . "/home/$USER/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
-#        else
-## export PATH="/home/$USER/anaconda3/bin:$PATH"  # commented out by conda initialize
-#        fi
-#    fi
-#    unset __conda_setup
-#    # <<< conda initialize <<<
-#    
-#    ;;
-#
-#    # macOS
-#    darwin*)
-#   
-#    # Set up Ruby path
-#    export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
-#
-#    # Set up directory colors via https://github.com/seebi/dircolors-solarized
-#    eval `gdircolors ~/.dir_colors`
-#
-#    # >>> conda initialize >>>
-#    # !! Contents within this block are managed by 'conda init' !!
-#    __conda_setup="$('/Users/$USER/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-#    if [ $? -eq 0 ]; then
-#        eval "$__conda_setup"
-#    else
-#        if [ -f "/Users/$USER/anaconda3/etc/profile.d/conda.sh" ]; then
-#            # . "/Users/$USER/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
-#        else
-#            # export PATH="/Users/$USER/anaconda3/bin:$PATH"  # commented out by conda initialize
-#        fi
-#    fi
-#    unset __conda_setup
-#    # <<< conda initialize <<<
-#    ;;
-#esac
+# OS-dependent aliases
+case "$OSTYPE" in
+    # Linux
+    linux*)  
+    ;;
 
+    # macOS
+    darwin*)
+   
+    # Set up Ruby path
+    export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/Users/$USER/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/Users/$USER/anaconda3/etc/profile.d/conda.sh" ]; then
+            # . "/Users/$USER/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
+        else
+            # export PATH="/Users/$USER/anaconda3/bin:$PATH"  # commented out by conda initialize
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+    ;;
+esac
 
 # ERISOne scripts
 if [[ $HOSTNAME = *research.partners.org ]] || [[ $HOSTNAME = cmu* ]]; then
@@ -150,6 +126,7 @@ if [[ $HOSTNAME = *research.partners.org ]] || [[ $HOSTNAME = cmu* ]]; then
     # Set up modules
     module purge
     module load vim/8.1-pyvim
+    module load git/2.17.0
 fi
 
 # https://conda.io/projects/conda/en/latest/user-guide/troubleshooting.html#resolution-for-python-packages-make-sure-you-have-not-set-the-pythonpath-or-pythonhome-variable
@@ -174,10 +151,7 @@ if [ -f '/home/er498/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/er498
 # Set up solarized dircolors
 export LSCOLORS=exfxfeaeBxxehehbadacea
 
-# Do not correct ssh to .ssh
-CORRECT_IGNORE_FILE=".ssh"
+# Do not correct variables to dotfile versions
+CORRECT_IGNORE_FILE=".*"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
-
-# Refresh global .gitignore
-git config --global core.excludesfile ~/.gitignore
