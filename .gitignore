@@ -24,6 +24,9 @@ Thumbs.db
 __pycache__/
 *.py[cod]
 
+# Results directory
+results/
+
 # C extensions
 *.so
 
