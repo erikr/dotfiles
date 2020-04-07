@@ -16,3 +16,5 @@ dependencies:
   - ruptures
   - matplotlib
   - pyodbc
+  - black
+  - pre-commit
