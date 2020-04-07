@@ -13,6 +13,7 @@ Plugin 'ervandew/supertab'
 Plugin 'itchyny/lightline.vim'
 Plugin 'djoshea/vim-autoread'
 Plugin 'terryma/vim-smooth-scroll'
+Plugin 'ambv/black', {'rtp': 'vim'}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -157,8 +158,13 @@ noremap <leader>W :w !sudo tee % > /dev/null<CR>
 if has("autocmd")
 	" Enable file type detection
 	filetype on
+
 	" Treat .json files as .js
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+
 	" Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+
+    " Run Black on save.
+    autocmd BufWritePre *.py execute ':Black'
 endif
