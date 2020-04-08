@@ -60,32 +60,6 @@ export EDITOR=$(which vim)
 # Source aliases
 source $HOME/.aliases
 
-# OS-dependent aliases
-case "$OSTYPE" in
-    # Linux
-    linux*)  
-    ;;
-
-    # macOS
-    darwin*)
-   
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/Users/$USER/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/Users/$USER/anaconda3/etc/profile.d/conda.sh" ]; then
-            # . "/Users/$USER/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
-        else
-            # export PATH="/Users/$USER/anaconda3/bin:$PATH"  # commented out by conda initialize
-        fi
-    fi
-    unset __conda_setup
-    # <<< conda initialize <<<
-    ;;
-esac
-
 # ERISOne scripts
 if [[ $HOSTNAME = *research.partners.org ]] || [[ $HOSTNAME = cmu* ]]; then
     echo "Setting up .zshrc on ERISOne"
@@ -102,11 +76,6 @@ fi
 # https://conda.io/projects/conda/en/latest/user-guide/troubleshooting.html#resolution-for-python-packages-make-sure-you-have-not-set-the-pythonpath-or-pythonhome-variable
 unset PYTHONPATH
 
-# Set up conda and activate custom environment
-source $HOME/anaconda3/etc/profile.d/conda.sh
-CONDA_CUSTOM_ENV="py37"
-conda deactivate; conda activate $CONDA_CUSTOM_ENV
-
 export PATH="/usr/local/sbin:$PATH"
 
 # Set postgres database name
@@ -119,3 +88,33 @@ export LSCOLORS=exfxfeaeBxxehehbadacea
 CORRECT_IGNORE_FILE=".*"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
+
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    # Linux
+    
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/home/aguirrelab/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/home/aguirrelab/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "/home/aguirrelab/anaconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/aguirrelab/anaconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+    #
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    # Mac OSX
+    #
+
+fi
+
+
+# Setup conda and activate custom environment
+CONDA_CUSTOM_ENV="py37"
+conda deactivate; conda activate $CONDA_CUSTOM_ENV
+
