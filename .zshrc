@@ -99,17 +99,31 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         eval "$__conda_setup"
     else
         if [ -f "/home/aguirrelab/anaconda3/etc/profile.d/conda.sh" ]; then
-            . "/home/aguirrelab/anaconda3/etc/profile.d/conda.sh"
+            . "/home/aguirrelab/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
         else
-            export PATH="/home/aguirrelab/anaconda3/bin:$PATH"
+            export PATH="/home/aguirrelab/anaconda3/bin:$PATH"  # commented out by conda initialize
         fi
     fi
     unset __conda_setup
     # <<< conda initialize <<<
-    #
+
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     # Mac OSX
     #
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/Users/er498/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/Users/er498/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "/Users/er498/anaconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/Users/er498/anaconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
 
 fi
 
@@ -117,4 +131,6 @@ fi
 # Setup conda and activate custom environment
 CONDA_CUSTOM_ENV="py37"
 conda deactivate; conda activate $CONDA_CUSTOM_ENV
+
+
 
