@@ -112,12 +112,6 @@ export PATH="/usr/local/sbin:$PATH"
 # Set postgres database name
 export PGDATABASE="ecgs"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/er498/google-cloud-sdk/path.zsh.inc' ]; then . '/home/er498/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/er498/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/er498/google-cloud-sdk/completion.zsh.inc'; fi
-
 # Set up solarized dircolors
 export LSCOLORS=exfxfeaeBxxehehbadacea
 
