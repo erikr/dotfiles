@@ -60,18 +60,24 @@ export EDITOR=$(which vim)
 # Source aliases
 source $HOME/.aliases
 
-# ERISOne scripts
-if [[ $HOSTNAME = *research.partners.org ]] || [[ $HOSTNAME = cmu* ]]; then
-    echo "Setting up .zshrc on ERISOne"
-    
-    # Update LD_LIBRARY_PATH so tmux can see custom-installed libevent stuff
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HOME}/local/lib
 
-    # Set up modules
-    module purge
-    module load vim/8.1-pyvim
-    module load git/2.17.0
-fi
+conda_initialize () {
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/home/aguirrelab/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/home/aguirrelab/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "/home/aguirrelab/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
+        else
+            export PATH="/home/aguirrelab/anaconda3/bin:$PATH"  # commented out by conda initialize
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+}
+
 
 # https://conda.io/projects/conda/en/latest/user-guide/troubleshooting.html#resolution-for-python-packages-make-sure-you-have-not-set-the-pythonpath-or-pythonhome-variable
 unset PYTHONPATH
@@ -89,48 +95,36 @@ CORRECT_IGNORE_FILE=".*"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 
+# Linux
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    # Linux
-    
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/home/aguirrelab/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/home/aguirrelab/anaconda3/etc/profile.d/conda.sh" ]; then
-            . "/home/aguirrelab/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
-        else
-            export PATH="/home/aguirrelab/anaconda3/bin:$PATH"  # commented out by conda initialize
-        fi
-    fi
-    unset __conda_setup
-    # <<< conda initialize <<<
 
+    # ERISOne
+    if [[ $HOSTNAME = *research.partners.org ]] || [[ $HOSTNAME = cmu* ]]; then
+        echo "Setting up .zshrc on ERISOne"ERISOne
+
+        # Update LD_LIBRARY_PATH so tmux can see custom-installed libevent stuff
+        export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HOME}/local/lib
+
+        # Set up modules
+        module purge
+        module load vim/8.1-pyvim
+        module load git/2.17.0
+
+        CONDA_PATH_PREFIX=$HOME
+
+    # Not ERISOne; other linux environments
+    elif [[ $hostname = "mithril" ]]; then
+        echo "we are on mithril"
+        CONDA_PATH_PREFIX="/home/aguirrelab/"
+    fi
+
+# macOS
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    # Mac OSX
-    #
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/Users/er498/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/Users/er498/anaconda3/etc/profile.d/conda.sh" ]; then
-            . "/Users/er498/anaconda3/etc/profile.d/conda.sh"
-        else
-            export PATH="/Users/er498/anaconda3/bin:$PATH"
-        fi
-    fi
-    unset __conda_setup
-    # <<< conda initialize <<<
-
+    CONDA_PATH_PREFIX=$HOME
 fi
 
+conda_initialize CONDA_PATH_PREFIX
 
 # Setup conda and activate custom environment
 CONDA_CUSTOM_ENV="py37"
 conda deactivate; conda activate $CONDA_CUSTOM_ENV
-
-
-
