@@ -66,9 +66,9 @@ conda_initialize () {
         eval "$__conda_setup"
     else
         if [ -f "$1/anaconda3/etc/profile.d/conda.sh" ]; then
-            . "$1/anaconda3/etc/profile.d/conda.sh" 
+            . "$1/anaconda3/etc/profile.d/conda.sh"
         else
-            export PATH="$1/anaconda3/bin:$PATH" 
+            export PATH="$1/anaconda3/bin:$PATH"
         fi
     fi
     unset __conda_setup
@@ -120,5 +120,8 @@ fi
 
 # Initialize conda paths, set custom environment, and activate
 conda_initialize "$CONDA_PATH_PREFIX"
+
+
+
 CONDA_CUSTOM_ENV="py37"
 conda deactivate; conda activate $CONDA_CUSTOM_ENV
