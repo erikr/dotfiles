@@ -7,3 +7,5 @@
     ui = auto
 [core]
 	excludesfile = ~/.gitignore
+[commit]
+	gpgsign = true
