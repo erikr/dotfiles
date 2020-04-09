@@ -15,10 +15,7 @@ setopt extended_glob
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="agnoster"
 ZSH_THEME="typewritten/typewritten"
-
-# Enable multine typewritten theme
 export TYPEWRITTEN_PROMPT_LAYOUT='singleline_verbose'
 
 # Uncomment the following line to use case-sensitive completion.
@@ -60,32 +57,28 @@ export EDITOR=$(which vim)
 # Source aliases
 source $HOME/.aliases
 
-
+# Functionalize conda init so we can use different paths on different machines
 conda_initialize () {
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/home/aguirrelab/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    __conda_setup="$('$1/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
-        if [ -f "/home/aguirrelab/anaconda3/etc/profile.d/conda.sh" ]; then
-            . "/home/aguirrelab/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
+        if [ -f "$1/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "$1/anaconda3/etc/profile.d/conda.sh" 
         else
-            export PATH="/home/aguirrelab/anaconda3/bin:$PATH"  # commented out by conda initialize
+            export PATH="$1/anaconda3/bin:$PATH" 
         fi
     fi
     unset __conda_setup
     # <<< conda initialize <<<
 }
 
-
 # https://conda.io/projects/conda/en/latest/user-guide/troubleshooting.html#resolution-for-python-packages-make-sure-you-have-not-set-the-pythonpath-or-pythonhome-variable
 unset PYTHONPATH
 
 export PATH="/usr/local/sbin:$PATH"
-
-# Set postgres database name
-export PGDATABASE="ecgs"
 
 # Set up solarized dircolors
 export LSCOLORS=exfxfeaeBxxehehbadacea
@@ -97,12 +90,12 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 
 # Linux
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-
+ 
     # ERISOne
     if [[ $HOSTNAME = *research.partners.org ]] || [[ $HOSTNAME = cmu* ]]; then
         echo "Setting up .zshrc on ERISOne"ERISOne
 
-        # Update LD_LIBRARY_PATH so tmux can see custom-installed libevent stuff
+        # Update LD_LIBRARY_PATH so tmux sees custom-installed libevent stuff
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HOME}/local/lib
 
         # Set up modules
@@ -113,9 +106,11 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         CONDA_PATH_PREFIX=$HOME
 
     # Not ERISOne; other linux environments
-    elif [[ $hostname = "mithril" ]]; then
-        echo "we are on mithril"
+    elif [[ $(hostname) = "mithril" ]]; then
         CONDA_PATH_PREFIX="/home/aguirrelab/"
+
+        # Set postgres database name
+        export PGDATABASE="ecgs"
     fi
 
 # macOS
@@ -123,8 +118,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     CONDA_PATH_PREFIX=$HOME
 fi
 
-conda_initialize CONDA_PATH_PREFIX
-
-# Setup conda and activate custom environment
+# Initialize conda paths, set custom environment, and activate
+conda_initialize "$CONDA_PATH_PREFIX"
 CONDA_CUSTOM_ENV="py37"
 conda deactivate; conda activate $CONDA_CUSTOM_ENV
