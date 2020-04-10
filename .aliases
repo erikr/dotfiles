@@ -35,7 +35,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # Navigation aliases to MAD3 server;
     # if not mounted, calls shell script to mount
     # then attempts to change dir to mount point
-    alias mad3cdac='mountpoint -q /media/mad3cdac || sh ~/repos/dotfiles/mount-mad3.sh && cd /media/mad3cdac/projects/partners_ecg'
+    alias mad3cdac='mountpoint -q /media/mad3cdac || sh ~/dotfiles/mount-mad3.sh && cd /media/mad3cdac/projects/partners_ecg'
 
 
 else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
@@ -70,18 +70,18 @@ alias gd='cd ~/googledrive'
 alias db="cd ~/Dropbox\ \(Partners\ HealthCare\)"
 alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
-alias repos='cd ~/repos'
-alias blog='cd ~/repos/erikr.github.io'
-alias dotfiles='cd ~/repos/dotfiles'
-alias ml4cvd='cd ~/repos/ml/'
+alias blog='cd ~/erikr.github.io'
+alias dotfiles='cd ~/dotfiles'
+alias ml4cvd='cd ~/ml'
+alias sts='cd ~/cardiac-surgery'
 
 # Shell scripts and utilities
-alias compiletex='sh ~/repos/dotfiles/compiletex.sh'
-alias lowercase="sh ~/repos/dotfiles/lowercase.sh"
-alias gsa="sh ~/repos/dotfiles/gsa.sh"
-alias convertCR2toJPG="sh ~/repos/dotfiles/convertCR2toJPG.sh"
-alias replacespaces="sh ~/repos/dotfiles/replaceSpaces.sh"
-alias speedtest='~/repos/dotfiles/speedtest-cli'
+alias compiletex='sh ~/dotfiles/compiletex.sh'
+alias lowercase="sh ~/dotfiles/lowercase.sh"
+alias gsa="sh ~/dotfiles/gsa.sh"
+alias convertCR2toJPG="sh ~/dotfiles/convertCR2toJPG.sh"
+alias replacespaces="sh ~/dotfiles/replaceSpaces.sh"
+alias speedtest='~/dotfiles/speedtest-cli'
 
 function prettycsv {
     perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
