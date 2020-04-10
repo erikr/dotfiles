@@ -13,7 +13,7 @@ Plugin 'ervandew/supertab'
 Plugin 'itchyny/lightline.vim'
 Plugin 'djoshea/vim-autoread'
 Plugin 'terryma/vim-smooth-scroll'
-Plugin 'ambv/black', {'rtp': 'vim'}
+Plugin 'psf/black'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

@@ -1,8 +1,7 @@
 !/bin/bash
 
 # This script creates symlinks from the home directory to here
-
-dir=~/repos/dotfiles
+dir=~/dotfiles
 files=".zshrc .aliases .bashrc .bash_profile .dir_colors .vim .vimrc .gitignore .wgetrc .tmux.conf .hushlogin"
 echo "Changing to the $dir directory"
 cd $dir
