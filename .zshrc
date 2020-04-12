@@ -2,19 +2,19 @@
 bindkey "^A" vi-beginning-of-line
 bindkey "^E" vi-end-of-line
 
-# Update PATH
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Update paths for homebrew
+export PATH="/usr/bin:$PATH"
+export PATH="/bin:$PATH"
+export PATH="/usr/sbin:$PATH"
+export PATH="/sbin:$PATH"
+export PATH="/usr/local:$PATH"
 
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# Ruby
+export PATH="~/.gem/ruby/2.6.0/:$PATH"
 
 # Enable globbing
 setopt extended_glob
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="typewritten/typewritten"
 export TYPEWRITTEN_PROMPT_LAYOUT='singleline_verbose'
 
@@ -41,14 +41,12 @@ COMPLETION_WAITING_DOTS="true"
 # see 'man strftime' for details.
 HIST_STAMPS="yyyy-mm-dd"
 
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Oh-my-zsh plugins live in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
 ZSH_DISABLE_COMPFIX="true"
+export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # Set default editor to vim
@@ -78,7 +76,9 @@ conda_initialize () {
 # https://conda.io/projects/conda/en/latest/user-guide/troubleshooting.html#resolution-for-python-packages-make-sure-you-have-not-set-the-pythonpath-or-pythonhome-variable
 unset PYTHONPATH
 
-export PATH="/usr/local/sbin:$PATH"
+# Set all pathe ntries to unique
+# https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path
+typeset -aU path
 
 # Set up solarized dircolors
 export LSCOLORS=exfxfeaeBxxehehbadacea
@@ -120,8 +120,5 @@ fi
 
 # Initialize conda paths, set custom environment, and activate
 conda_initialize "$CONDA_PATH_PREFIX"
-
-
-
 CONDA_CUSTOM_ENV="py37"
 conda deactivate; conda activate $CONDA_CUSTOM_ENV
