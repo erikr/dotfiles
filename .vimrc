@@ -168,3 +168,6 @@ if has("autocmd")
     " Run Black on save.
     autocmd BufWritePre *.py execute ':Black'
 endif
+
+" Run Black with F9
+nnoremap <F9> :Black<CR>
