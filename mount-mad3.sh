@@ -1,7 +1,7 @@
-USEREMAIL="ereinertsen@mgh.harvard.edu"
+USER="ereinertsen@mgh.harvard.edu"
 SERVER="//mad3.partners.org"
-LABDIR="mgh-neuro-cdac"
-#LABDIR="PHS-RISC-LM4"
+LABIDR="PHS-RISC-LM4/MUSE_DATA"
+#LABDIR="mgh-neuro-cdac/projects/"
 #LABDIR="PHS-RISC-LM4/ConvertedData/bedmaster/BLK8"
 DESTINATION="/media/mad3"
-sudo mount -t cifs -o user=$USEREMAIL,uid=1000 $SERVER/$LABDIR $DESTINATION
+sudo mount -t cifs -o user=$USER,uid=1000 $SERVER/$LABDIR $DESTINATION
