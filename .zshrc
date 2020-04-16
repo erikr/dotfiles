@@ -8,6 +8,7 @@ export PATH="/bin:$PATH"
 export PATH="/usr/sbin:$PATH"
 export PATH="/sbin:$PATH"
 export PATH="/usr/local:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
 # Ruby
 export PATH="~/.gem/ruby/2.6.0/:$PATH"
