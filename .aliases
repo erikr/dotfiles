@@ -88,7 +88,7 @@ function prettycsv {
 }
 
 # Jupyter remote on Mithril
-remote_user="er498"
+remote_user="erik"
 remote_machine="mithril"
 PORT=3745
 alias remote_notebook_start='ssh -f ${remote_user}@${remote_machine} ". ~/.zshrc; jupyter-lab --no-browser --port=${PORT}"'
