@@ -2,16 +2,20 @@
 bindkey "^A" vi-beginning-of-line
 bindkey "^E" vi-end-of-line
 
-# Update paths for homebrew
+# Update paths for Homebrew
 export PATH="/usr/bin:$PATH"
 export PATH="/bin:$PATH"
 export PATH="/usr/sbin:$PATH"
 export PATH="/sbin:$PATH"
 export PATH="/usr/local:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 
-# Ruby
-export PATH="~/.gem/ruby/2.6.0/:$PATH"
+# Update paths for Homebrew Ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/ruby/lib"
+export CPPFLAGS="-I/usr/local/opt/ruby/include"
+export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 
 # Enable globbing
 setopt extended_glob
