@@ -35,8 +35,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # Navigation aliases to MAD3 server;
     # if not mounted, calls shell script to mount
     # then attempts to change dir to mount point
-    alias mad3cdac='mountpoint -q /media/mad3cdac || sh ~/dotfiles/mount-mad3.sh && cd /media/mad3cdac/projects/partners_ecg'
-
+    alias mad3='mountpoint -q /media/mad3 || sh ~/dotfiles/mount-mad3.sh && cd /media/mad3/projects/partners_ecg'
+    
 
 else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
     alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; sudo gem update --system; sudo gem update; sudo gem cleanup; conda update --all; brew update; brew upgrade; brew cleanup; brew doctor; conda update --all; conda clean -a"

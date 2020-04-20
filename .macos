@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # ~/.macos — Erik Reinertsen's default MacOS settings
 
 # Close any open System Preferences panes, to prevent them from overriding
