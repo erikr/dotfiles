@@ -12,10 +12,14 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 # Update paths for Homebrew Ruby
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/ruby/lib"
-export CPPFLAGS="-I/usr/local/opt/ruby/include"
-export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+#export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="~/.gem/ruby/2.7.0/bin:$PATH"
+#export PATH="~/.gem/ruby/2.7.0/bin:$PATH"
+#export LDFLAGS="-L/usr/local/opt/ruby/lib"
+#export CPPFLAGS="-I/usr/local/opt/ruby/include"
+#export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+export GEM_HOME=$HOME/gems
+export PATH=$HOME/gems/bin:$PATH
 
 # Enable globbing
 setopt extended_glob
