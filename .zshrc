@@ -115,6 +115,10 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         CONDA_PATH_PREFIX=$HOME
 
     # Not ERISOne; other linux environments
+    elif [[ $(hostname) = "narya" ]]; then
+        CONDA_PATH_PREFIX="/home/cdac/"
+
+    # Not ERISOne; other linux environments
     elif [[ $(hostname) = "mithril" ]]; then
         CONDA_PATH_PREFIX="/home/aguirrelab/"
 
