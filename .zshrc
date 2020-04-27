@@ -131,3 +131,6 @@ fi
 conda_initialize "$CONDA_PATH_PREFIX"
 CONDA_CUSTOM_ENV="py37"
 conda deactivate; conda activate $CONDA_CUSTOM_ENV
+
+# Add GPG key 
+export GPG_TTY=$(tty)
