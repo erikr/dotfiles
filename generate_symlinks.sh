@@ -2,7 +2,7 @@
 
 # This script creates symlinks from the home directory to here
 dir=~/dotfiles
-files=".zshrc .aliases .bashrc .bash_profile .dir_colors .vimrc .gitignore .wgetrc .tmux.conf .hushlogin"
+files=".zshrc .aliases .dir_colors .vimrc .gitignore .wgetrc .tmux.conf .hushlogin"
 echo "Changing to the $dir directory"
 cd $dir
 echo "...done"
