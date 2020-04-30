@@ -52,7 +52,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # Oh-my-zsh plugins live in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git tmux zsh-syntax-highlighting zsh-autosuggestions)
 
 ZSH_DISABLE_COMPFIX="true"
 export ZSH=$HOME/.oh-my-zsh
