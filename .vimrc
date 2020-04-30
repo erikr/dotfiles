@@ -13,7 +13,7 @@ Plugin 'ervandew/supertab'
 Plugin 'itchyny/lightline.vim'
 Plugin 'djoshea/vim-autoread'
 Plugin 'terryma/vim-smooth-scroll'
-" Plugin 'psf/black'
+Plugin 'psf/black'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -165,9 +165,12 @@ if has("autocmd")
 	" Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 
-    " Run Black on save.
-    autocmd BufWritePre *.py execute ':Black'
+    "" Run Black on save.
+    "autocmd BufWritePre *.py execute ':Black'
 endif
 
 " Run Black with F9
 nnoremap <F9> :Black<CR>
+
+" Set line length in black because it does not yet respect pyproject.toml
+let g:black_linelength = 79
