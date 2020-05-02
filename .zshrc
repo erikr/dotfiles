@@ -101,7 +101,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
  
     # ERISOne
-    if [[ $HOSTNAME = *research.partners.org ]] || [[ $HOSTNAME = cmu* ]]; then
+    if [[ $(hostname) = *research.partners.org ]] || [[ $(hostname) = cmu* ]]; then
         echo "Setting up .zshrc on ERISOne"ERISOne
 
         # Update LD_LIBRARY_PATH so tmux sees custom-installed libevent stuff
@@ -118,8 +118,11 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     elif [[ $(hostname) = "narya" ]]; then
         CONDA_PATH_PREFIX="/home/cdac/"
 
-    # Not ERISOne; other linux environments
-    elif [[ $(hostname) = "mithril" ]]; then
+    # Aguirre Lab workstations
+    elif [[ $(hostname) = "mithril" ]] || \
+         [[ $(hostname) = "everest" ]] || \
+         [[ $(hostname) = "montserrat" ]] || \
+         [[ $(hostname) = "olympus" ]]; then
         CONDA_PATH_PREFIX="/home/aguirrelab/"
 
         # Set postgres database name
