@@ -13,6 +13,7 @@ Plugin 'ervandew/supertab'
 Plugin 'itchyny/lightline.vim'
 Plugin 'djoshea/vim-autoread'
 Plugin 'terryma/vim-smooth-scroll'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'psf/black'
 
 " All of your Plugins must be added before the following line
@@ -174,3 +175,6 @@ nnoremap <F9> :Black<CR>
 
 " Set line length in black because it does not yet respect pyproject.toml
 let g:black_linelength = 79
+
+" Disable markdown folding
+let g:vim_markdown_folding_disabled = 1
