@@ -1,24 +1,15 @@
-" Disable defaults from vim-ftplugin-python
-let g:python_recommended_style = 0
+call plug#begin('~/.vim/plugged')
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" vim-plug plugins
+Plug 'altercation/vim-colors-solarized'
+Plug 'ervandew/supertab'
+Plug 'itchyny/lightline.vim'
+Plug 'djoshea/vim-autoread'
+Plug 'yuttie/comfortable-motion.vim'
+Plug 'plasticboy/vim-markdown'
+" Plug 'psf/black'
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'ervandew/supertab'
-Plugin 'itchyny/lightline.vim'
-Plugin 'djoshea/vim-autoread'
-Plugin 'terryma/vim-smooth-scroll'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'psf/black'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 " Set lightline theme to solarized
 let g:lightline = {
@@ -33,6 +24,10 @@ let g:solarized_termtrans=1
 
 set t_Co=256
 
+" Disable defaults from vim-ftplugin-python
+let g:python_recommended_style = 0
+
+set nocompatible              " be iMproved, required
 
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
@@ -42,6 +37,8 @@ else
     let &t_EI = "\e[2 q"
 endif
 
+" Disable markdown folding
+let g:vim_markdown_folding_disabled = 1
 
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
@@ -63,7 +60,6 @@ set colorcolumn=80
 set cursorline
 
 " Automatic indentation for python code
-filetype indent plugin on
 set autoindent
 
 " Remove hidden characters
@@ -175,6 +171,3 @@ nnoremap <F9> :Black<CR>
 
 " Set line length in black because it does not yet respect pyproject.toml
 let g:black_linelength = 79
-
-" Disable markdown folding
-let g:vim_markdown_folding_disabled = 1
