@@ -158,8 +158,11 @@ if has("autocmd")
     "autocmd BufWritePre *.py execute ':Black'
 endif
 
+" Run Black from command line within vim
+nnoremap <F9> :silent execute "! /usr/local/bin/black % &" <bar> redraw!<CR>
+
 " Run Black with F9
-nnoremap <F9> :Black<CR>
+" nnoremap <F9> :Black<CR>
 
 " Set line length in black because it does not yet respect pyproject.toml
 let g:black_linelength = 79
