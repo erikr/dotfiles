@@ -73,7 +73,7 @@ alias dt='cd ~/Desktop'
 alias blog='cd ~/erikr.github.io'
 alias dotfiles='cd ~/dotfiles'
 alias ml4cvd='cd ~/ml'
-alias sts='cd ~/cardiac-surgery'
+alias sts='cd ~/sts-ml'
 
 # Shell scripts and utilities
 alias compiletex='sh ~/dotfiles/compiletex.sh'

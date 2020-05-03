@@ -7,7 +7,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'djoshea/vim-autoread'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'plasticboy/vim-markdown'
-" Plug 'psf/black'
+" Plug 'psf/black', { 'tag': '*' }
 
 call plug#end()
 
@@ -129,14 +129,6 @@ set showcmd
 
 " Enable line numbers
 set number
-" " Use relative line numbers
-" if exists("&relativenumber")
-" 	set relativenumber
-" 	au BufReadPost * set relativenumber
-" endif
-
-" Start scrolling three lines before the horizontal window border
-"set scrolloff=3
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
