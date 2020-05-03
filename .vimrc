@@ -7,7 +7,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'djoshea/vim-autoread'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'plasticboy/vim-markdown'
-" Plug 'psf/black', { 'tag': '*' }
+Plug 'psf/black'
 
 call plug#end()
 
@@ -159,10 +159,10 @@ if has("autocmd")
 endif
 
 " Run Black from command line within vim
-nnoremap <F9> :silent execute "! /usr/local/bin/black % &" <bar> redraw!<CR>
+nnoremap <F10> :silent execute "! /usr/local/bin/black % &" <bar> redraw!<CR>
 
 " Run Black with F9
-" nnoremap <F9> :Black<CR>
+nnoremap <F9> :Black<CR>
 
 " Set line length in black because it does not yet respect pyproject.toml
 let g:black_linelength = 79
