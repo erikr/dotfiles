@@ -1,14 +1,13 @@
 call plug#begin('~/.vim/plugged')
 
 " vim-plug plugins
+Plug 'itchyny/lightline.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ervandew/supertab'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'djoshea/vim-autoread'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'plasticboy/vim-markdown'
-"Plug 'psf/black'
+"Plug 'psf/black', { 'branch': 'stable' }
 
 call plug#end()
 
@@ -17,8 +16,10 @@ syntax enable
 set background=dark
 colorscheme solarized
 let g:solarized_termtrans=1
-let g:airline_theme='solarized'
-let g:airline_solarized_bg='dark'
+
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
 
 set t_Co=256
 
@@ -155,9 +156,6 @@ if has("autocmd")
     "" Run Black on save.
     "autocmd BufWritePre *.py execute ':Black'
 endif
-
-" Run Black from command line within vim
-nnoremap <F10> :silent execute "! /usr/local/bin/black % &" <bar> redraw!<CR>
 
 " Run Black with F9
 nnoremap <F9> :Black<CR>
