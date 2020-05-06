@@ -147,6 +147,9 @@ if has("autocmd")
 	" Enable file type detection
 	filetype on
 
+    " Treat dotfiles as .sh 
+    autocmd BufNewFile,BufRead .aliases,.zshrc,.tmux.conf,.macos set syntax=sh
+
 	" Treat .json files as .js
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 
