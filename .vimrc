@@ -7,7 +7,7 @@ Plug 'ervandew/supertab'
 Plug 'djoshea/vim-autoread'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'plasticboy/vim-markdown'
-"Plug 'psf/black', { 'branch': 'stable' }
+Plug 'psf/black'
 
 call plug#end()
 
