@@ -65,7 +65,7 @@ else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
     alias rebuildspotlight="sudo mdutil -E /"
 fi
 
-alias gd='cd ~/googledrive'
+alias gd='cd ~/Google\ Drive'
 alias db="cd ~/Dropbox\ \(Partners\ HealthCare\)"
 alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
