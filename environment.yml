@@ -12,9 +12,10 @@ dependencies:
   - numpy
   - scikit-learn
   - h5py
+  - multiprocess
   - imbalanced-learn
   - ruptures
   - matplotlib
-  - pyodbc
+  - seaborn
   - black
   - pre-commit
