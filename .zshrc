@@ -109,7 +109,6 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
     # Aguirre Lab workstations
     elif [[ $(hostname) = "mithril" ]] || \
-         [[ $(hostname) = "narya" ]] || \
          [[ $(hostname) = "everest" ]] || \
          [[ $(hostname) = "montserrat" ]] || \
          [[ $(hostname) = "olympus" ]]; then
