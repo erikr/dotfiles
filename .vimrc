@@ -130,7 +130,7 @@ set showcmd
 set number
 
 " Toggle paste mode
-set pastetoggle=<F2>
+set pastetoggle=<F5>
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
