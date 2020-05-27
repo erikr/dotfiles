@@ -129,6 +129,9 @@ set showcmd
 " Enable line numbers
 set number
 
+" Toggle paste mode
+set pastetoggle=<F2>
+
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
 	let save_cursor = getpos(".")
