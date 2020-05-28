@@ -86,6 +86,9 @@ function prettycsv {
     perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
 }
 
+# Remove local branches that have gone remotes
+alias gitcleanlocalbranches="git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done"
+
 # Jupyter remote on Mithril
 remote_user="erik"
 remote_machine="mithril"
