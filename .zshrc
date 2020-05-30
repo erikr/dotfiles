@@ -66,7 +66,7 @@ conda_initialize () {
         eval "$__conda_setup"
     else
         if [ -f "$1/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "$1/miniconda3/etc/profile.d/conda.sh"
+            . "$1/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
         else
             export PATH="$1/miniconda3/bin:$PATH"
         fi
@@ -95,15 +95,16 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
  
     # ERISOne
     if [[ $(hostname) = *research.partners.org ]] || [[ $(hostname) = cmu* ]]; then
-        echo "Setting up .zshrc on ERISOne"ERISOne
+        echo "Setting up .zshrc on ERISOne"
 
         # Update LD_LIBRARY_PATH so tmux sees custom-installed libevent stuff
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HOME}/local/lib
 
         # Set up modules
         module purge
-        module load vim/8.1-pyvim
         module load git/2.17.0
+        module load vim/8.1-pyvim
+        module rm Extras-anaconda2/default
 
         CONDA_PATH_PREFIX=$HOME
 
