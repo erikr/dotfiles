@@ -103,6 +103,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         # Set up modules
         module purge
         module load git/2.17.0
+        module load tmux/2.3
         module load vim/8.1-pyvim
         module rm Extras-anaconda2/default
 
