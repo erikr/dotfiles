@@ -125,7 +125,7 @@ fi
 
 # Initialize conda paths, set custom environment, and activate
 conda_initialize "$CONDA_PATH_PREFIX"
-CONDA_CUSTOM_ENV="py37"
+CONDA_CUSTOM_ENV="py38"
 conda deactivate; conda activate $CONDA_CUSTOM_ENV
 
 # Add GPG key 
