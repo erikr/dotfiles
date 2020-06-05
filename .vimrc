@@ -94,9 +94,6 @@ set modelines=4
 set exrc
 set secure
 
-" Highlight current line
-set cursorline
-
 " No tabs, and all tab chars become 4 space chars
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
