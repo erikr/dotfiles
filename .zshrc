@@ -57,28 +57,10 @@ export EDITOR=$(which vim)
 # Source aliases
 source $HOME/.aliases
 
-# Functionalize conda init so we can use different paths on different machines
-conda_initialize () {
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('$1/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "$1/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "$1/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
-        else
-            export PATH="$1/miniconda3/bin:$PATH"
-        fi
-    fi
-    unset __conda_setup
-    # <<< conda initialize <<<
-}
-
 # https://conda.io/projects/conda/en/latest/user-guide/troubleshooting.html#resolution-for-python-packages-make-sure-you-have-not-set-the-pythonpath-or-pythonhome-variable
 unset PYTHONPATH
 
-# Set all pathe ntries to unique
+# Set all path entries to unique
 # https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path
 typeset -aU path
 
@@ -114,7 +96,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
          [[ $(hostname) = "everest" ]] || \
          [[ $(hostname) = "montserrat" ]] || \
          [[ $(hostname) = "olympus" ]]; then
-        CONDA_PATH_PREFIX="/home/aguirrelab/"
+        CONDA_PATH_PREFIX="/home/aguirrelab"
 
         # Set postgres database name
         export PGDATABASE="ecgs"
@@ -125,10 +107,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     CONDA_PATH_PREFIX=$HOME
 fi
 
-# Initialize conda paths, set custom environment, and activate
-conda_initialize "$CONDA_PATH_PREFIX"
+# 
+source $CONDA_PATH_PREFIX/miniconda3/etc/profile.d/conda.sh 
 CONDA_CUSTOM_ENV="py38"
-conda deactivate; conda activate $CONDA_CUSTOM_ENV
+[[ -z "$TMUX" ]] || conda deactivate; conda activate $CONDA_CUSTOM_ENV
 
 # Add GPG key 
 export GPG_TTY=$(tty)
