@@ -91,6 +91,10 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
         CONDA_PATH_PREFIX=$HOME
 
+    # Stultz Lab workstations
+    elif [[ $(hostname) = "anduril" ]]; then
+        CONDA_PATH_PREFIX="/home/stultzlab"
+
     # Aguirre Lab workstations
     elif [[ $(hostname) = "mithril" ]] || \
          [[ $(hostname) = "everest" ]] || \
