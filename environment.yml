@@ -1,18 +1,20 @@
 name: py38
 channels:
-  - anaconda
   - conda-forge
+  - anaconda
+  - defaults
 dependencies:
-  - python=3.8
-  - pandas
-  - numpy
-  - xgboost
-  - h5py
-  - multiprocess
-  - matplotlib
-  - seaborn
-  - black
-  - pre-commit
-  - setuptools
-  - toml
-  - isort
+  - black=19.10b0
+  - isort=4.3.21
+  - numpy=1.18.1
+  - pandas=1.0.3
+  - pre-commit=2.4.0
+  - pylint=2.5.2
+  - python=3.8.3
+  - scipy=1.4.1
+  - seaborn=0.10.1
+  - setuptools=46.4.0
+  - xgboost=1.0.2
+  - toml=0.10.1
+  - scikit-learn=0.23.1
+  - matplotlib=3.2.1
