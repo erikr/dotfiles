@@ -113,7 +113,7 @@ fi
 
 # 
 source $CONDA_PATH_PREFIX/miniconda3/etc/profile.d/conda.sh 
-CONDA_CUSTOM_ENV="ml4sts"
+CONDA_CUSTOM_ENV="er"
 [[ -z "$TMUX" ]] || conda deactivate; conda activate $CONDA_CUSTOM_ENV
 
 # Add GPG key 
