@@ -93,25 +93,29 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
     # Stultz Lab workstations
     elif [[ $(hostname) = "anduril" ]]; then
-        CONDA_PATH_PREFIX="/home/stultzlab"
+        CONDA_PATH_PREFIX="/home/stultzlab/miniconda3"
 
     # Aguirre Lab workstations
     elif [[ $(hostname) = "mithril" ]] || \
          [[ $(hostname) = "everest" ]] || \
          [[ $(hostname) = "montserrat" ]] || \
          [[ $(hostname) = "olympus" ]]; then
-        CONDA_PATH_PREFIX="/home/aguirrelab"
+        CONDA_PATH_PREFIX="/home/aguirrelab/miniconda3"
 
         # Set postgres database name
         export PGDATABASE="ecgs"
+    
+    # MIT Quanta server
+    elif [[ $(hostname) = stultzlab* ]]; then
+        CONDA_PATH_PREFIX="/opt/miniconda"
     fi
 
 # macOS
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    CONDA_PATH_PREFIX=$HOME
+    CONDA_PATH_PREFIX="$HOME/miniconda3"
 fi
 
-source $CONDA_PATH_PREFIX/miniconda/etc/profile.d/conda.sh 
+source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh 
 CONDA_CUSTOM_ENV="er"
 [[ -z "$TMUX" ]] || conda deactivate; conda activate $CONDA_CUSTOM_ENV
 
