@@ -111,8 +111,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     CONDA_PATH_PREFIX=$HOME
 fi
 
-# 
-source $CONDA_PATH_PREFIX/miniconda3/etc/profile.d/conda.sh 
+source $CONDA_PATH_PREFIX/miniconda/etc/profile.d/conda.sh 
 CONDA_CUSTOM_ENV="er"
 [[ -z "$TMUX" ]] || conda deactivate; conda activate $CONDA_CUSTOM_ENV
 
