@@ -5,7 +5,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ervandew/supertab'
 Plug 'djoshea/vim-autoread'
-Plug 'yuttie/comfortable-motion.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'psf/black'
 
@@ -106,8 +105,11 @@ set smartcase
 set incsearch
 " Always show status line
 set laststatus=2
+
 " Enable mouse in all modes
 set mouse=a
+set ttymouse=sgr
+
 " Disable error bells
 set noerrorbells
 " Don’t reset cursor to start of line when moving around.
@@ -162,6 +164,3 @@ endif
 
 " Run Black with F9
 nnoremap <F9> :Black<CR>
-
-" Set line length in black because it does not yet respect pyproject.toml
-let g:black_linelength = 79
