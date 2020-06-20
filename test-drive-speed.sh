@@ -1,0 +1,1 @@
+dd bs=10M count=1000 if=/dev/zero of=testfile conv=fdatasync; rm testfile
