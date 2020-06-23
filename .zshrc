@@ -116,7 +116,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh 
-CONDA_CUSTOM_ENV="er"
+CONDA_CUSTOM_ENV="erikr_default"
 [[ -z "$TMUX" ]] || conda deactivate; conda activate $CONDA_CUSTOM_ENV
 
 # Add GPG key 

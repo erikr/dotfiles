@@ -1,4 +1,4 @@
-name: er
+name: erikr_default
 channels:
   - conda-forge
   - anaconda
