@@ -1,7 +1,6 @@
-name: erikr_default
+name: er
 channels:
   - conda-forge
-  - anaconda
   - defaults
 dependencies:
   - black=19.10b0
