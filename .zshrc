@@ -89,7 +89,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         module load vim/8.1-pyvim
         module rm Extras-anaconda2/default
 
-        CONDA_PATH_PREFIX=$HOME
+        CONDA_PATH_PREFIX="$HOME/miniconda3"
 
     # Stultz Lab workstations
     elif [[ $(hostname) = "anduril" ]]; then
