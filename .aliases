@@ -89,13 +89,11 @@ function prettycsv {
 # Remove local branches that have gone remotes
 #alias gitcleanlocalbranches="git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done"
 
-# Jupyter remote on Mithril
+# Jupyter notebook on remote machine
 remote_user="erik"
 remote_machine="mithril"
 PORT=3745
 
-alias remote_notebook_start='ssh -f ${remote_user}@${remote_machine} ". ~/.zshrc; jupyter-lab --no-browser --port=${PORT}"'
-
-alias remote_notebook_stop='ssh ${remote_user}@${remote_machine} "pkill -u ${remote_user} jupyter && lsof -ti:${PORT} | xargs kill"'
-
+alias remote_notebook_start='ssh -f ${remote_user}@${remote_machine} "jupyter-lab --no-browser --port=${PORT}"'
 alias port_forward='ssh -N -f -L localhost:${PORT}:localhost:${PORT} ${remote_user}@${remote_machine}; open http://localhost:${PORT} &'
+alias remote_notebook_stop='ssh ${remote_user}@${remote_machine} "pkill -u ${remote_user} jupyter && lsof -ti:${PORT} | xargs kill"'
