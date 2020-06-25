@@ -20,3 +20,4 @@ dependencies:
   - jupyterlab
   - ipyparallel
   - vim
+  - nodejs
