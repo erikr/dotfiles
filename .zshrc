@@ -94,7 +94,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # Stultz Lab workstations
     elif [[ $(hostname) = "anduril" ]]; then
         CONDA_PATH_PREFIX="/home/stultzlab/miniconda3"
-
+ 
     # Aguirre Lab workstations
     elif [[ $(hostname) = "mithril" ]] || \
          [[ $(hostname) = "everest" ]] || \
@@ -121,3 +121,9 @@ CONDA_CUSTOM_ENV="er"
 
 # Add GPG key 
 export GPG_TTY=$(tty)
+
+
+# Mithril dropbox
+if [[ $(hostname) = "mithril" ]]; then
+    dropbox start
+fi
