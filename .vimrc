@@ -48,11 +48,11 @@ nnoremap <esc>^[ <esc>^[
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
-" Set linewidth at 80 char
-set textwidth=80
+" Set linewidth
+set textwidth=88
 
 " Set column to signify length
-set colorcolumn=80
+set colorcolumn=88
 
 " Highlight current line
 set cursorline
