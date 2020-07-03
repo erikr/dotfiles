@@ -3,19 +3,20 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - black=19.10b0
-  - isort=4.3.21
-  - numpy=1.18.1
-  - pandas=1.0.5
-  - scikit-learn=0.23.1
-  - pre-commit=2.4.0
-  - pylint=2.5.2
   - python=3.8.3
-  - scipy=1.4.1
-  - setuptools=46.4.0
-  - toml=0.10.1
-  - matplotlib=3.2.1
-  - seaborn=0.10.1
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - pre-commit
+  - pylint
+  - identify
+  - setuptools
+  - toml
+  - black
+  - isort
   - h5py
   - jupyterlab
   - ipyparallel
