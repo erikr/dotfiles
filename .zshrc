@@ -124,6 +124,7 @@ export GPG_TTY=$(tty)
 
 
 # Mithril dropbox
-if [[ $(hostname) = "mithril" ]]; then
+if [[ $(hostname) = "mithril" ]] || \
+   [[ $(hostname) = "anduril" ]]; then
     dropbox start
 fi
