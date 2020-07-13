@@ -1,4 +1,4 @@
-USER=ereinertsen@mgh.harvard.edu
+USER=er498
 SERVER=//mad3.partners.org
 
 # Mount directory on LandMark4 containing daily ECG dumps
