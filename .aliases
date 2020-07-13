@@ -56,7 +56,7 @@ else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
     alias cpwd="pwd | tr -d '\n' | pbcopy"
 
     # Save GitHub recovery code to clipboard
-    alias ghpw="cat $HOME/Dropbox\ \(Partners\ HealthCare\)/tokens-and-backups/github-personal-access-token.txt | pbcopy"
+    alias ghpw="cat $HOME/Dropbox\ \(Partners\ HealthCare\)/tokens_and_backups/github-personal-access-token.txt | pbcopy"
 
     # Rebuild icon cache in macOS
     alias rebuildicons="sudo rm -rfv /Library/Caches/com.apple.iconservices.store; sudo find /private/var/folders/ \( -name com.apple.dock.iconcache -or -name com.apple.iconservices \) -exec rm -rfv {} \; ; sleep 3;sudo touch /Applications/* ; killall Dock; killall Finder"
