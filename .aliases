@@ -82,7 +82,7 @@ alias convertCR2toJPG="sh ~/dotfiles/convertCR2toJPG.sh"
 alias replacespaces="sh ~/dotfiles/replaceSpaces.sh"
 alias speedtest='~/dotfiles/speedtest-cli'
 
-function prettycsv {
+prettycsv () {
     perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
 }
 
@@ -94,11 +94,35 @@ gitcleanlocalbranches () {
     done
 }
 
-# Jupyter notebook on remote machine
-remote_user="erik"
-remote_machine="mithril"
-PORT=3745
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# Manage Jupyter Lab on remote server  #
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# Set default values
+USER_DEFAULT=erik
+SERVER_DEFAULT=mithril
+PORT_DEFAULT=3745
 
-alias remote_notebook_start='ssh -f ${remote_user}@${remote_machine} ". ~/.zshrc ; jupyter lab --no-browser --port=${PORT}"'
-alias port_forward='ssh -N -f -L localhost:${PORT}:localhost:${PORT} ${remote_user}@${remote_machine}; open http://localhost:${PORT} &'
-alias remote_notebook_stop='ssh ${remote_user}@${remote_machine} "pkill -u ${remote_user} jupyter; lsof -ti:${PORT} | xargs kill"'
+# Start Jupyter lab session over SSH
+# remote_nb_start user server port
+# e.g. "remote_nb_start erik mithril 3745"
+remote_nb_start () {
+    ssh -f ${1:-$USER_DEFAULT}@${2:-$SERVER_DEFAULT} \
+        ". ~/.zshrc ; jupyter lab --no-browser --port=${PORT:-$PORT_DEFAULT}"
+}
+
+# Forward port and open browser to localhost at that port to see the Lab session
+# User should manually call this function, rather than calling it inside remote_nb_start,
+# because starting Jupyter is slow. The notebook must finish initializing before
+# forwarding the port and opening a browser.
+# port_forward user server port
+# e.g. "port_forward erik mithril 3745"
+port_forward () {
+    ssh -N -f -L localhost:${3:-$PORT_DEFAULT}:localhost:${3:-$PORT_DEFAULT} \
+        ${1:-$USER_DEFAULT}@${2:-$SERVER_DEFAULT}; open http://localhost:${PORT:-3745} &
+}
+
+# Kill Jupyter Lab and processes using the port
+remote_nb_stop () {
+    ssh ${1:-$USER_DEFAULT}@${2:-$SERVER_DEFAULT} \
+        "pkill -u ${1:-$USER_DEFAULT} jupyter; lsof -ti:${3:-$PORT_DEFAULT} | xargs kill"
+}
