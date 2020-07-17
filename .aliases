@@ -97,17 +97,17 @@ gitcleanlocalbranches () {
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # Manage Jupyter Lab on remote server  #
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# Set default values
-USER_DEFAULT=erik
-SERVER_DEFAULT=mithril
-PORT_DEFAULT=3745
+# Set default values that can be overidden by input args
+REMOTEUSER=erik
+SERVER=mithril
+PORT=3745
 
 # Start Jupyter lab session over SSH
 # remote_nb_start user server port
 # e.g. "remote_nb_start erik mithril 3745"
 remote_nb_start () {
-    ssh -f ${1:-$USER_DEFAULT}@${2:-$SERVER_DEFAULT} \
-        ". ~/.zshrc ; jupyter lab --no-browser --port=${3:-$PORT_DEFAULT}"
+    ssh -f ${1:-$REMOTEUSER}@${2:-$SERVER} \
+        ". ~/.zshrc ; jupyter lab --no-browser --port=${3:-$PORT}"
 }
 
 # Forward port and open browser to localhost at that port to see the Lab session
@@ -117,12 +117,16 @@ remote_nb_start () {
 # port_forward user server port
 # e.g. "port_forward erik mithril 3745"
 port_forward () {
-    ssh -N -f -L localhost:${3:-$PORT_DEFAULT}:localhost:${3:-$PORT_DEFAULT} \
-        ${1:-$USER_DEFAULT}@${2:-$SERVER_DEFAULT}; open http://localhost:${3:-3745} &
+    ssh -N -f -L localhost:${3:-$PORT}:localhost:${3:-$PORT} \
+        ${1:-$REMOTEUSER}@${2:-$SERVER}; open http://localhost:${3:-$PORT} &
 }
 
-# Kill Jupyter Lab and processes using the port
+# If it is your first time opening the notebook on local, click on the URL shown in the
+# terminal output to open localhost with the token, or set a password.
+
+# Shut down remote Jupyter server, and kill local listening process
 remote_nb_stop () {
-    ssh ${1:-$USER_DEFAULT}@${2:-$SERVER_DEFAULT} \
-        "pkill -u ${1:-$USER_DEFAULT} jupyter; lsof -ti:${3:-$PORT_DEFAULT} | xargs kill"
+    ssh -f ${1:-$REMOTEUSER}@${2:-$SERVER} \
+        ". ~/.zshrc ; jupyter notebook stop ${3:-$PORT}" ;
+    kill $(lsof -ti :${3:-$PORT}) &
 }
