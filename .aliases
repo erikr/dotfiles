@@ -107,7 +107,7 @@ PORT_DEFAULT=3745
 # e.g. "remote_nb_start erik mithril 3745"
 remote_nb_start () {
     ssh -f ${1:-$USER_DEFAULT}@${2:-$SERVER_DEFAULT} \
-        ". ~/.zshrc ; jupyter lab --no-browser --port=${PORT:-$PORT_DEFAULT}"
+        ". ~/.zshrc ; jupyter lab --no-browser --port=${3:-$PORT_DEFAULT}"
 }
 
 # Forward port and open browser to localhost at that port to see the Lab session
@@ -118,7 +118,7 @@ remote_nb_start () {
 # e.g. "port_forward erik mithril 3745"
 port_forward () {
     ssh -N -f -L localhost:${3:-$PORT_DEFAULT}:localhost:${3:-$PORT_DEFAULT} \
-        ${1:-$USER_DEFAULT}@${2:-$SERVER_DEFAULT}; open http://localhost:${PORT:-3745} &
+        ${1:-$USER_DEFAULT}@${2:-$SERVER_DEFAULT}; open http://localhost:${3:-3745} &
 }
 
 # Kill Jupyter Lab and processes using the port
