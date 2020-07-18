@@ -71,7 +71,7 @@ alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
 alias blog='cd ~/erikr.github.io'
 alias dotfiles='cd ~/dotfiles'
-alias ml4cvd='cd ~/ml'
+alias ml='cd ~/ml'
 alias sts='cd ~/sts-ml'
 
 # Shell scripts and utilities
@@ -82,6 +82,7 @@ alias convertCR2toJPG="sh ~/dotfiles/convertCR2toJPG.sh"
 alias replacespaces="sh ~/dotfiles/replaceSpaces.sh"
 alias speedtest='~/dotfiles/speedtest-cli'
 
+# Print contents of CSV with perl, column, and less
 prettycsv () {
     perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
 }
