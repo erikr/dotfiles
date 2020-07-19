@@ -2,6 +2,7 @@ name: er
 channels:
   - conda-forge
   - defaults
+  - anaconda
 dependencies:
   - python=3.8.3
   - numpy
@@ -22,3 +23,5 @@ dependencies:
   - ipyparallel
   - vim
   - nodejs
+  - tqdm
+  - pytest
