@@ -31,7 +31,7 @@ unsetopt CASE_GLOB
 HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+#ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -116,7 +116,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh 
-CONDA_CUSTOM_ENV="er"
+CONDA_CUSTOM_ENV="ml4cvd"
 [[ -z "$TMUX" ]] || conda deactivate; conda activate $CONDA_CUSTOM_ENV
 
 # Add GPG key 
