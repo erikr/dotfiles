@@ -6,7 +6,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'ervandew/supertab'
 Plug 'djoshea/vim-autoread'
 Plug 'plasticboy/vim-markdown'
-Plug 'psf/black'
+Plug 'psf/black', { 'branch': 'stable' }
 
 call plug#end()
 
