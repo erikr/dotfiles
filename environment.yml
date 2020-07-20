@@ -25,3 +25,7 @@ dependencies:
   - nodejs
   - tqdm
   - pytest
+  - tensorflow
+  - pip
+  - pip:
+    - tensorflow-addons
