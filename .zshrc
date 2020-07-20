@@ -122,7 +122,7 @@ CONDA_CUSTOM_ENV="er"
 if [[ -z "$TMUX" ]]; then
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
         if [[ $(hostname) = "mithril" ]] || [[ $(hostname) = "anduril" ]]; then
-            dropbox start
+            dropbox start &
         fi
         tmux new -s $(hostname)
     fi
