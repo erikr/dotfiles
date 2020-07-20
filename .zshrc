@@ -104,7 +104,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
         # Set postgres database name
         export PGDATABASE="ecgs"
-    
+
     # MIT Quanta server
     elif [[ $(hostname) = stultzlab* ]]; then
         CONDA_PATH_PREFIX="/opt/miniconda"
@@ -117,18 +117,17 @@ fi
 source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh 
 CONDA_CUSTOM_ENV="er"
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    [[ -z "$TMUX" ]] || conda deactivate; conda activate $CONDA_CUSTOM_ENV
-elif [[ "$OSTYPE" == "linux-gnu" ]]; then
-    [[ -z "$TMUX" ]] && tmux || conda deactivate; conda activate $CONDA_CUSTOM_ENV
+# If tmux not running, activate the environment
+# If on linux and logged in to mithril or anduril, start Dropbox too
+if [[ -z "$TMUX" ]]; then
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        tmux new -s $(hostname)
+        if [[ $(hostname) = "mithril" ]] || [[ $(hostname) = "anduril" ]]; then
+            dropbox start
+        fi
+    fi
+    conda deactivate; conda activate $CONDA_CUSTOM_ENV
 fi
 
-# Add GPG key 
+# Add GPG key
 export GPG_TTY=$(tty)
-
-
-# Mithril dropbox
-if [[ $(hostname) = "mithril" ]] || \
-   [[ $(hostname) = "anduril" ]]; then
-    dropbox start
-fi
