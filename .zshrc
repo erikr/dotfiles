@@ -121,10 +121,10 @@ CONDA_CUSTOM_ENV="er"
 # If on linux and logged in to mithril or anduril, start Dropbox too
 if [[ -z "$TMUX" ]]; then
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
-        tmux new -s $(hostname)
         if [[ $(hostname) = "mithril" ]] || [[ $(hostname) = "anduril" ]]; then
             dropbox start
         fi
+        tmux new -s $(hostname)
     fi
     conda deactivate; conda activate $CONDA_CUSTOM_ENV
 fi
