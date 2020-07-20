@@ -110,14 +110,18 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         CONDA_PATH_PREFIX="/opt/miniconda"
     fi
 
-# macOS
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     CONDA_PATH_PREFIX="$HOME/miniconda3"
 fi
 
 source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh 
 CONDA_CUSTOM_ENV="er"
-[[ -z "$TMUX" ]] && tmux || conda deactivate; conda activate $CONDA_CUSTOM_ENV
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    [[ -z "$TMUX" ]] || conda deactivate; conda activate $CONDA_CUSTOM_ENV
+elif [[ "$OSTYPE" == "linux-gnu" ]]; then
+    [[ -z "$TMUX" ]] && tmux || conda deactivate; conda activate $CONDA_CUSTOM_ENV
+fi
 
 # Add GPG key 
 export GPG_TTY=$(tty)
