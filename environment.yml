@@ -25,7 +25,9 @@ dependencies:
   - nodejs
   - tqdm
   - pytest
+  - tensorflow-gpu
   - tensorflow
   - pip
   - pip:
     - tensorflow-addons
+    - tensorflow-probability
