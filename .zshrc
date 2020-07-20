@@ -126,8 +126,9 @@ if [[ -z "$TMUX" ]]; then
         fi
         tmux new -s $(hostname)
     fi
-    conda deactivate; conda activate $CONDA_CUSTOM_ENV
 fi
+
+conda deactivate; conda activate $CONDA_CUSTOM_ENV
 
 # Add GPG key
 export GPG_TTY=$(tty)
