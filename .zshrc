@@ -121,10 +121,11 @@ CONDA_CUSTOM_ENV="er"
 # If on linux and logged in to mithril or anduril, start Dropbox too
 if [[ -z "$TMUX" ]]; then
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
-        if [[ $(hostname) = "mithril" ]] || [[ $(hostname) = "anduril" ]]; then
+        if [[ $(hostname) = "mithril" ]] || \
+           [[ $(hostname) = "anduril" ]]; then
             dropbox start &
         fi
-        tmux new -s $(hostname)
+        tmux attach -t $(hostname) || tmux new -s $(hostname)
     fi
 fi
 
