@@ -117,7 +117,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh 
-CONDA_CUSTOM_ENV="ml4cvd"
+CONDA_CUSTOM_ENV="er"
 
 # If tmux not running, activate the environment
 # If on linux and logged in to mithril or anduril, start Dropbox too
