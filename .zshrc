@@ -116,8 +116,17 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     CONDA_PATH_PREFIX="$HOME/miniconda3"
 fi
 
+# activate conda
 source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh 
+
+# Check list of installed conda envs; if desired env is there, activate it
 CONDA_CUSTOM_ENV="er"
+if [[ $(conda env list | awk '{print $1}' ) = *"$CONDA_CUSTOM_ENV"* ]]; then
+    conda activate $1
+else
+    echo "Could not find conda env named $CONDA_CUSTOM_ENV"
+fi;
+
 
 # If tmux not running, activate the environment
 # If on linux and logged in to mithril or anduril, start Dropbox too
