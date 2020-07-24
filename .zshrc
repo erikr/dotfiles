@@ -1,3 +1,5 @@
+setopt AUTO_CD
+
 # Set key binding
 bindkey "^A" vi-beginning-of-line
 bindkey "^E" vi-end-of-line

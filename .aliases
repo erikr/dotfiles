@@ -65,14 +65,16 @@ else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
     alias rebuildspotlight="sudo mdutil -E /"
 fi
 
-alias gdr='cd ~/Google\ Drive'
-alias db="cd ~/Dropbox\ \(Partners\ HealthCare\)"
-alias dl='cd ~/Downloads'
-alias dt='cd ~/Desktop'
-alias blog='cd ~/erikr.github.io'
-alias dotfiles='cd ~/dotfiles'
-alias ml='cd ~/ml'
-alias sts='cd ~/sts-ml'
+hash -d gdr=~"/Google Drive"
+hash -d db=~"/Dropbox (Partners HealthCare)"
+hash -d dl=~/Downloads
+hash -d dt=~/Desktop
+hash -d blog=~/erikr.github.io
+hash -d dotfiles=~/dotfiles
+hash -d ml=~/ml
+hash -d sts=~/sts-ml
+
+hashcwd() { hash -d "$1"="$PWD" }
 
 # Shell scripts and utilities
 alias compiletex='sh ~/dotfiles/compiletex.sh'
