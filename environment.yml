@@ -29,6 +29,7 @@ dependencies:
   - tensorflow-gpu
   - tensorflow
   - pip
+  - ncurses
   - pip:
     - tensorflow-addons
     - tensorflow-probability
