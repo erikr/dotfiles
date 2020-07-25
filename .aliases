@@ -39,7 +39,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     
 
 else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
-    alias update="upgrade_oh_my_zsh; sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; sudo gem update --system; sudo gem update; sudo gem cleanup; conda update --all; brew update; brew upgrade; brew cleanup; brew doctor; conda update conda; conda update --all; conda clean -a"
+    alias update="upgrade_oh_my_zsh; sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; sudo gem update --system; sudo gem update; sudo gem cleanup; conda update --all; brew update; brew upgrade; brew cleanup; brew doctor; conda update conda; conda update --all; conda clean -a; sudo purge"
 
     # --group-directories-first: self-explanatory
     # --color=auto: use colors
