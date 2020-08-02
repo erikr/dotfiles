@@ -97,6 +97,11 @@ gitcleanlocalbranches () {
     done
 }
 
+# sts_ecg project: print AUCs in a results directory
+aucs () {
+    grep -hoE "ROC AUC.*= 0.[0-9]{3}" */log* | awk 'NR % 2 == 0' | grep -hoE "0.[0-9]{3}"
+}
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # Manage Jupyter Lab on remote server  #
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
