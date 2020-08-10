@@ -1,4 +1,4 @@
-USER=er498
+LOGIN=er498
 SERVER=//mad3.partners.org
 #SERVER=//ideafs.partners.org
 
@@ -15,4 +15,4 @@ MOUNTPOINT="/media/cdac"
 #LABDIR="PHS-RISC-LM4"
 #MOUNTPOINT="/media/lm4-bedmaster"
 
-sudo mount -t cifs -o user=$USER,uid=$(id -u),gid=$(id -g aguirrelab),domain=partners $SERVER/$LABDIR $MOUNTPOINT
+sudo mount -t cifs -o user=$LOGIN,uid=$(id -u),gid=$(id -g),domain=partners $SERVER/$LABDIR $MOUNTPOINT
