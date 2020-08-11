@@ -137,8 +137,6 @@ CONDA_CUSTOM_ENV="er"
 if [[ $(conda env list | awk '{print $1}' ) = *"$CONDA_CUSTOM_ENV"* ]]; then
     conda deactivate
     conda activate $CONDA_CUSTOM_ENV
-else
-    echo "Could not find conda env named $CONDA_CUSTOM_ENV"
 fi;
 
 
