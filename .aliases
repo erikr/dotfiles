@@ -38,14 +38,11 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # Xclip to copy text from terminal to clipboard in Ubuntu
 	alias pbcopy='xclip -sel clip'
 	alias pbpaste='xclip -o'
-
-    # Navigation aliases to MAD3 server;
-    # if not mounted, calls shell script to mount
-    # then attempts to change dir to mount point
-    alias mad3='mountpoint -q /media/mad3 || sh ~/dotfiles/mount-mad3.sh && cd /media/mad3/projects/partners_ecg'
     
+    # Report file system disk space usage, excluding irrelevant file systems
+    alias df='df -h -x squashfs -x tmpfs -x devtmpfs'
 
-else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
+else # $OSTYPE must be darwin* == macos, so put mac-only aliases here%
     function update () {
         omz update;
         sudo softwareupdate -i -a;
