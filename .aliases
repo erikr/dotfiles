@@ -116,7 +116,10 @@ function gitcleanlocalbranches () {
 
 # sts_ecg project: print AUCs in a results directory
 function aucs () {
-    grep -hoE "ROC AUC.*= 0.[0-9]{3}" */log* | awk 'NR % 2 == 0' | grep -hoE "0.[0-9]{3}"
+    for file in */log*
+    do
+        tac "$file" | grep -m 1 -hoE "ROC AUC.*= 0.[0-9]{3}" | grep -hoE "0.[0-9]{3}"
+    done
 }
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
