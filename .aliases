@@ -106,7 +106,7 @@ function prettycsv () {
     perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
 }
 
-# Remove local branches that have gone remotes
+# Remove local branches that lack remotes
 function gitcleanlocalbranches () {
     git fetch -p;
     for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}');
