@@ -121,7 +121,6 @@ fi
 # activate conda
 source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh 
 
-# If tmux not running, activate the environment
 # If on linux and logged in to mithril or anduril, start Dropbox too
 if [[ -z "$TMUX" ]]; then
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
@@ -129,7 +128,7 @@ if [[ -z "$TMUX" ]]; then
            [[ $(hostname) = "anduril" ]]; then
             dropbox start
         fi
-        tmux attach -t $(hostname) || tmux new -s $(hostname)
+        # tmux attach -t $(hostname) || tmux new -s $(hostname)
     fi
 fi
 
