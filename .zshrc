@@ -19,8 +19,8 @@ export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 # Enable globbing
 setopt extended_glob
 
-ZSH_THEME="typewritten/typewritten"
-export TYPEWRITTEN_PROMPT_LAYOUT='singleline_verbose'
+ZSH_THEME="typewritten"
+export TYPEWRITTEN_PROMPT_LAYOUT='multiline'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
