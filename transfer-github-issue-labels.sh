@@ -11,7 +11,7 @@ GH_TOKEN=
 
 # The source repository whose labels to copy.
 SRC_GH_USER=aguirre-lab
-SRC_GH_REPO=icu
+SRC_GH_REPO=ml
 
 # The target repository to add or update labels.
 TGT_GH_USER=aguirre-lab
