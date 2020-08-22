@@ -94,20 +94,15 @@ hash -d sts=~/sts-ml
 
 
 # Shell scripts and utilities
-alias compiletex='sh ~/dotfiles/compiletex.sh'
-alias lowercase="sh ~/dotfiles/lowercase.sh"
-alias gsa="sh ~/dotfiles/gsa.sh"
-alias convertCR2toJPG="sh ~/dotfiles/convertCR2toJPG.sh"
-alias replacespaces="sh ~/dotfiles/replaceSpaces.sh"
-alias speedtest='~/dotfiles/speedtest-cli'
+alias speedtest='~/dotfiles/speedtest-cli.py'
 
 # Print contents of CSV with perl, column, and less
 function prettycsv () {
     perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
 }
 
-# Remove local branches that lack remotes
-function gitcleanlocalbranches () {
+# Remove local branches that lack remotes: "git clean local branches"
+function gclb () {
     git fetch -p;
     for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}');
     do git branch -D $branch;
