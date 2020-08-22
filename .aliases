@@ -74,7 +74,7 @@ else # $OSTYPE must be darwin* == macos, so put mac-only aliases here%
     alias cpwd="pwd | tr -d '\n' | pbcopy"
 
     # Save GitHub recovery code to clipboard
-    alias ghpw="cat $HOME/Dropbox\ \(Partners\ HealthCare\)/tokens_and_backups/github-personal-access-token.txt | pbcopy"
+    alias ghpw="cat $HOME/Dropbox\ \(Partners\ HealthCare\)/tokens-and-backups/github-personal-access-token.txt | pbcopy"
 
     # Rebuild icon cache in macOS
     alias rebuildicons="sudo rm -rfv /Library/Caches/com.apple.iconservices.store; sudo find /private/var/folders/ \( -name com.apple.dock.iconcache -or -name com.apple.iconservices \) -exec rm -rfv {} \; ; sleep 3;sudo touch /Applications/* ; killall Dock; killall Finder"
@@ -111,7 +111,10 @@ function gclb () {
 
 # sts_ecg project: print AUCs in a results directory
 function aucs () {
-    grep -hoE "ROC AUC.*= 0.[0-9]{3}" */log* | awk 'NR % 2 == 0' | grep -hoE "0.[0-9]{3}"
+    for file in */log*
+    do
+        tac "$file" | grep -m 1 -hoE "ROC AUC.*= 0.[0-9]{3}" | grep -hoE "0.[0-9]{3}"
+    done
 }
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #

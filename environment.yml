@@ -4,7 +4,7 @@ channels:
   - defaults
   - anaconda
 dependencies:
-  - python=3.8.3
+  - python=3.8
   - numpy
   - pandas
   - scipy
@@ -26,10 +26,5 @@ dependencies:
   - tqdm
   - pytest
   - numcodecs
-  - tensorflow-gpu
-  - tensorflow
   - pip
   - ncurses
-  - pip:
-    - tensorflow-addons
-    - tensorflow-probability
