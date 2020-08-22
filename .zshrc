@@ -22,6 +22,10 @@ setopt extended_glob
 # Pure theme
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
+LIGHTGREY=#a6a6a6
+zstyle :prompt:pure:user color $LIGHTGREY
+zstyle :prompt:pure:host color $LIGHTGREY
+zstyle :prompt:pure:virtualenv color $LIGHTGREY
 prompt pure
 
 # Uncomment the following line to use case-sensitive completion.
