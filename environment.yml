@@ -10,6 +10,7 @@ dependencies:
   - scipy
   - scikit-learn
   - matplotlib
+  - ipympl
   - seaborn
   - pre-commit
   - pylint
@@ -25,6 +26,6 @@ dependencies:
   - nodejs
   - tqdm
   - pytest
+  - ncurses
   - numcodecs
   - pip
-  - ncurses
