@@ -1,15 +1,17 @@
 name: er
 channels:
   - conda-forge
-  - defaults
   - anaconda
+  - defaults
 dependencies:
   - python=3.8
+  - conda-forge::ncurses
   - numpy
   - pandas
   - scipy
   - scikit-learn
   - matplotlib
+  - ipympl
   - seaborn
   - pre-commit
   - pylint
@@ -25,6 +27,6 @@ dependencies:
   - nodejs
   - tqdm
   - pytest
+  - ncurses
   - numcodecs
   - pip
-  - ncurses
