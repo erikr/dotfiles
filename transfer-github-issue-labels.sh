@@ -15,7 +15,7 @@ SRC_GH_REPO=ml
 
 # The target repository to add or update labels.
 TGT_GH_USER=aguirre-lab
-TGT_GH_REPO=edw
+TGT_GH_REPO=cardiac-arrest
 
 # ---------------------------------------------------------
 
