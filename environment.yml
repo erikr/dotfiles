@@ -27,6 +27,5 @@ dependencies:
   - nodejs
   - tqdm
   - pytest
-  - ncurses
   - numcodecs
   - pip
