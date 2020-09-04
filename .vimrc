@@ -7,6 +7,7 @@ Plug 'ervandew/supertab'
 Plug 'djoshea/vim-autoread'
 Plug 'plasticboy/vim-markdown'
 Plug 'psf/black'
+Plug 'mtdl9/vim-log-highlighting'
 
 call plug#end()
 
