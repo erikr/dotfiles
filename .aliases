@@ -5,6 +5,9 @@ alias ...="cd ../.."
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
+# Replace vi with vim
+alias vi='vim'
+
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 
@@ -110,10 +113,22 @@ function gclb () {
 }
 
 # sts_ecg project: print AUCs in a results directory
+# Log files are stored in subdirectories of current directly: ./*/log*
+# Log files contain output like: ROC AUC * {label} * = 0.NNN
+# Where the AUC for a label on the test set is the last ocurrence of the above fragment in the file
+#
+# For example, in an experiment to predict "death", our results are in a 
+# folder "experiment" with 10 subfolders "trial_N", where N is the trial number.
+# Within each "trial_N" subfolder, there is a file "log" with output lines:
+#
+#     ROC AUC death = 0.NNN
+#
+# We run "auc" in the "results" folder.
+# If our models predict more than one label, use "auc death".
 function aucs () {
     for file in */log*
     do
-        tac "$file" | grep -m 1 -hoE "ROC AUC.*= 0.[0-9]{3}" | grep -hoE "0.[0-9]{3}"
+		tac "$file" | grep -m 1 -hoE "ROC AUC.*$1.*= 0.[0-9]{3}" | grep -hoE "0.[0-9]{3}"
     done
 }
 
