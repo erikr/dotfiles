@@ -8,6 +8,7 @@ Plug 'djoshea/vim-autoread'
 Plug 'plasticboy/vim-markdown'
 Plug 'psf/black'
 Plug 'mtdl9/vim-log-highlighting'
+Plug 'nathanaelkane/vim-indent-guides'
 
 call plug#end()
 
