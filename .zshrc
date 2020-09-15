@@ -137,12 +137,12 @@ if [[ -z "$TMUX" ]]; then
 fi
 
 
-# Check list of installed conda envs; if desired env is there, activate it
-CONDA_CUSTOM_ENV="er"
-if [[ $(conda env list | awk '{print $1}' ) = *"$CONDA_CUSTOM_ENV"* ]]; then
-    conda deactivate
-    conda activate $CONDA_CUSTOM_ENV
-fi;
+## Check list of installed conda envs; if desired env is there, activate it
+#CONDA_CUSTOM_ENV="er"
+#if [[ $(conda env list | awk '{print $1}' ) = *"$CONDA_CUSTOM_ENV"* ]]; then
+#    conda deactivate
+#    conda activate $CONDA_CUSTOM_ENV
+#fi;
 
 
 # Add GPG key

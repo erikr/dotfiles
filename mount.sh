@@ -7,7 +7,7 @@ SERVER=//mad3.partners.org
 #MOUNTPOINT="/media/lm4-ecg"
 
 # Mount MAD3
-LABDIR="mgh-neuro-cdac/projects/ml4icu"
+LABDIR="mgh-neuro-cdac/projects"
 MOUNTPOINT="/media/mad3"
 
 # Mount LandMark4 Bedmaster

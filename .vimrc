@@ -163,5 +163,5 @@ if has("autocmd")
     "autocmd BufWritePre *.py execute ':Black'
 endif
 
-" Run Black with F9
-nnoremap <F9> :Black<CR>
+" Run Black with F key
+nnoremap <F6> :Black<CR>
