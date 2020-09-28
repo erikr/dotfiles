@@ -14,8 +14,8 @@ SRC_GH_USER=aguirre-lab
 SRC_GH_REPO=ml
 
 # The target repository to add or update labels.
-TGT_GH_USER=aguirre-lab
-TGT_GH_REPO=cardiac-arrest
+TGT_GH_USER=mit-ccrg
+TGT_GH_REPO=covid
 
 # ---------------------------------------------------------
 
