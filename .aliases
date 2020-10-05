@@ -49,9 +49,7 @@ else # $OSTYPE must be darwin* == macos, so put mac-only aliases here%
     function update () {
         omz update;
         sudo softwareupdate -i -a;
-        sudo gem update --system;
-        sudo gem update;
-        sudo gem cleanup;
+        gem cleanup;
         brew update;
         brew upgrade;
         brew cleanup;
