@@ -78,10 +78,47 @@ else # $OSTYPE must be darwin* == macos, so put mac-only aliases here%
     alias ghpw="cat $HOME/Dropbox\ \(Partners\ HealthCare\)/tokens-and-backups/github-personal-access-token | pbcopy"
 
     # Rebuild icon cache in macOS
-    alias rebuildicons="sudo rm -rfv /Library/Caches/com.apple.iconservices.store; sudo find /private/var/folders/ \( -name com.apple.dock.iconcache -or -name com.apple.iconservices \) -exec rm -rfv {} \; ; sleep 3;sudo touch /Applications/* ; killall Dock; killall Finder"
+    alias rebuildicons="sudo rm -rfv /Library/Caches/com.apple.iconservices.store; sudo find /private/var/folders/ \( -name com.apple.dock.iconcache -or -name com.apple.iconservices \) -exec rm -rfv {} \; ; sleep 3; sudo touch /Applications/* ; killall Dock; killall Finder"
 
     # Re-index everything in Spotlight
     alias rebuildspotlight="sudo mdutil -E /"
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+    # Manage Jupyter Lab on remote server  #
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+    # Set default values that can be overidden by input args
+    REMOTEUSER=erik
+    SERVER=mithril
+    PORT=3745
+
+    # Start Jupyter lab session over SSH
+    # remote_nb_start user server port
+    # e.g. "remote_nb_start erik mithril 3745"
+    function remote_nb_start () {
+        ssh -f ${1:-$REMOTEUSER}@${2:-$SERVER} \
+            ". ~/.zshrc ; jupyter lab --no-browser --port=${3:-$PORT}"
+    }
+
+    # Forward port and open browser to localhost at that port to see the Lab session
+    # User should manually call this function, rather than calling it inside remote_nb_start,
+    # because starting Jupyter is slow. The notebook must finish initializing before
+    # forwarding the port and opening a browser.
+    # port_forward user server port
+    # e.g. "port_forward erik mithril 3745"
+    function port_forward () {
+        ssh -N -f -L localhost:${3:-$PORT}:localhost:${3:-$PORT} \
+            ${1:-$REMOTEUSER}@${2:-$SERVER}; open http://localhost:${3:-$PORT} &
+    }
+
+    # If it is your first time opening the notebook on local, click on the URL shown in the
+    # terminal output to open localhost with the token, or set a password.
+
+    # Shut down remote Jupyter server, and kill local listening process
+    function remote_nb_stop () {
+        ssh -f ${1:-$REMOTEUSER}@${2:-$SERVER} \
+            ". ~/.zshrc ; jupyter notebook stop ${3:-$PORT}" ;
+        kill $(lsof -ti :${3:-$PORT}) &
+    }
 fi
 
 hash -d gdr=~"/Google Drive"
@@ -98,12 +135,12 @@ hash -d sts=~/sts-ml
 alias speedtest='~/dotfiles/speedtest-cli.py'
 
 # Print contents of CSV with perl, column, and less
-function prettycsv () {
+function prettycsv() {
     perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
 }
 
 # Remove local branches that lack remotes: "git clean local branches"
-function gclb () {
+function gclb() {
     git fetch -p;
     for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}');
     do git branch -D $branch;
@@ -123,46 +160,11 @@ function gclb () {
 #
 # We run "auc" in the "results" folder.
 # If our models predict more than one label, use "auc death".
-function aucs () {
+function aucs() {
     for file in */log*
     do
 		tac "$file" | grep -m 1 -hoE "ROC AUC.*$1.*= 0.[0-9]{3}" | grep -hoE "0.[0-9]{3}"
     done
 }
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# Manage Jupyter Lab on remote server  #
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# Set default values that can be overidden by input args
-REMOTEUSER=erik
-SERVER=mithril
-PORT=3745
 
-# Start Jupyter lab session over SSH
-# remote_nb_start user server port
-# e.g. "remote_nb_start erik mithril 3745"
-function remote_nb_start () {
-    ssh -f ${1:-$REMOTEUSER}@${2:-$SERVER} \
-        ". ~/.zshrc ; jupyter lab --no-browser --port=${3:-$PORT}"
-}
-
-# Forward port and open browser to localhost at that port to see the Lab session
-# User should manually call this function, rather than calling it inside remote_nb_start,
-# because starting Jupyter is slow. The notebook must finish initializing before
-# forwarding the port and opening a browser.
-# port_forward user server port
-# e.g. "port_forward erik mithril 3745"
-function port_forward () {
-    ssh -N -f -L localhost:${3:-$PORT}:localhost:${3:-$PORT} \
-        ${1:-$REMOTEUSER}@${2:-$SERVER}; open http://localhost:${3:-$PORT} &
-}
-
-# If it is your first time opening the notebook on local, click on the URL shown in the
-# terminal output to open localhost with the token, or set a password.
-
-# Shut down remote Jupyter server, and kill local listening process
-function remote_nb_stop () {
-    ssh -f ${1:-$REMOTEUSER}@${2:-$SERVER} \
-        ". ~/.zshrc ; jupyter notebook stop ${3:-$PORT}" ;
-    kill $(lsof -ti :${3:-$PORT}) &
-}
