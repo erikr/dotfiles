@@ -127,8 +127,6 @@ hash -d dl=~/Downloads
 hash -d dt=~/Desktop
 hash -d blog=~/erikr.github.io
 hash -d dotfiles=~/dotfiles
-hash -d ml=~/ml
-hash -d sts=~/sts-ml
 
 
 # Shell scripts and utilities
