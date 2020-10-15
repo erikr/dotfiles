@@ -1,5 +1,7 @@
 LOGIN=er498
 SERVER=//mad3.partners.org
+GROUP_GROUPNAME=aguirrelab
+GROUP_USERNAME=aguirrelab
 
 # Set server within MAD3 and mount point on local machine
 if [[ "$1" == "ml4icu" ]]; then
@@ -19,5 +21,5 @@ if [[ "$1" == "erisone" ]]; then
     MOUNTPOINT=/media/erisone
     sudo mount -t cifs -o user=$LOGIN,uid=$(id -u),gid=$(id -g),vers=1.0 $SERVER/$USER $MOUNTPOINT
 else
-    sudo mount -t cifs -o user=$LOGIN,uid=$(id -u),gid=$(id -g),domain=partners $SERVER/$LABDIR $MOUNTPOINT
+    sudo mount -t cifs -o user=$LOGIN,uid=$(id -u $GROUP_USERNAME),gid=$(id -g $GROUP_GROUPNAME),noperm,domain=partners $SERVER/$LABDIR $MOUNTPOINT
 fi
