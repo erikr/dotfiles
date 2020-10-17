@@ -7,15 +7,16 @@
 # access the source and target repositories.
 # This is how you authorize with the GitHub API.
 # https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line
-GH_TOKEN=
+GH_TOKEN=b38d745c24dad9111ac62d2e1ba2b6a3db3207d8
+
 
 # The source repository whose labels to copy.
 SRC_GH_USER=aguirre-lab
-SRC_GH_REPO=ml
+SRC_GH_REPO=ml4c3
 
 # The target repository to add or update labels.
-TGT_GH_USER=mit-ccrg
-TGT_GH_REPO=covid
+TGT_GH_USER=$1
+TGT_GH_REPO=$2
 
 # ---------------------------------------------------------
 
