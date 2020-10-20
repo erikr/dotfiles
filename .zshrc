@@ -13,8 +13,18 @@ export PATH="/usr/local:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
-# Gems path 
-export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
+# Gems path for macOS built-in Ruby
+#export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
+
+# Load rbenv
+eval "$(rbenv init -)"
+
+# For compilers to find ruby you may need to set:
+export LDFLAGS="-L/usr/local/opt/ruby/lib"
+export CPPFLAGS="-I/usr/local/opt/ruby/include"
+
+# For pkg-config to find ruby you may need to set:
+export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 
 # Enable globbing
 setopt extended_glob
