@@ -12,12 +12,7 @@ export PATH="/sbin:$PATH"
 export PATH="/usr/local:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-
-# Gems path for macOS built-in Ruby
-#export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
-
-# Load rbenv
-eval "$(rbenv init -)"
+export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 
 # For compilers to find ruby you may need to set:
 export LDFLAGS="-L/usr/local/opt/ruby/lib"
@@ -130,6 +125,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     CONDA_PATH_PREFIX="$HOME/miniconda3"
+    eval "$(rbenv init -)"
 fi
 
 # activate conda
