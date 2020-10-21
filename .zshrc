@@ -128,7 +128,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     eval "$(rbenv init -)"
 fi
 
-# activate conda
+# Activate conda
 source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh 
 
 # If on linux and logged in to mithril or anduril, start Dropbox too
@@ -142,14 +142,12 @@ if [[ -z "$TMUX" ]]; then
     fi
 fi
 
-
 ## Check list of installed conda envs; if desired env is there, activate it
 #CONDA_CUSTOM_ENV="er"
 #if [[ $(conda env list | awk '{print $1}' ) = *"$CONDA_CUSTOM_ENV"* ]]; then
 #    conda deactivate
 #    conda activate $CONDA_CUSTOM_ENV
 #fi;
-
 
 # Add GPG key
 export GPG_TTY=$(tty)
