@@ -10,6 +10,9 @@ if [[ "$1" == "ml4icu" ]]; then
 elif [[ "$1" == "lm4" ]]; then
     LABDIR="PHS-RISC-LM4/ConvertedData/bedmaster"
     MOUNTPOINT="/media/lm4-bedmaster"
+elif [[ "$1" == "alarms" ]]; then
+    LABDIR="PHS-RISC-LM4/OriginalData/bedmaster/alarms"
+    MOUNTPOINT="/media/lm4-alarms"
 elif [[ "$1" == "ecg" ]]; then
     LABDIR="PHS-RISC-LM4/MUSE_DATA"
     MOUNTPOINT="/media/lm4-ecg"

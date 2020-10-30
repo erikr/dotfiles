@@ -17,7 +17,7 @@ syntax enable
 set background=dark
 colorscheme solarized
 let g:solarized_termtrans=1
-
+" let g:solarized_contrast = "high"
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ }
@@ -100,11 +100,14 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " Highlight searches
 set hlsearch
+
 " Smart case
 set ignorecase
 set smartcase
+
 " Highlight dynamically as pattern is typed
 set incsearch
+
 " Always show status line
 set laststatus=2
 
