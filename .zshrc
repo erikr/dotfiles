@@ -27,6 +27,7 @@ setopt extended_glob
 # Pure theme
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
+autoload -Uz compinit && compinit
 LIGHTGREY=default
 zstyle :prompt:pure:user color $LIGHTGREY
 zstyle :prompt:pure:host color $LIGHTGREY
