@@ -27,7 +27,6 @@ setopt extended_glob
 # Pure theme
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
-autoload -Uz compinit && compinit
 LIGHTGREY=default
 zstyle :prompt:pure:user color $LIGHTGREY
 zstyle :prompt:pure:host color $LIGHTGREY
@@ -59,7 +58,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # Oh-my-zsh plugins live in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git tmux zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git tmux zsh-syntax-highlighting zsh-autosuggestions gitfast)
 
 ZSH_DISABLE_COMPFIX="true"
 export ZSH=$HOME/.oh-my-zsh
