@@ -34,3 +34,4 @@ dependencies:
     - cudatoolkit=10.2
     - pip:
         - black
+        - modin[all]
