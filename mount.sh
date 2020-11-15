@@ -4,9 +4,9 @@ GROUP_GROUPNAME=aguirrelab
 GROUP_USERNAME=aguirrelab
 
 # Set server within MAD3 and mount point on local machine
-if [[ "$1" == "ml4icu" ]]; then
-    LABDIR="mgh-neuro-cdac/projects/ml4icu"
-    MOUNTPOINT="/media/mad3"
+if [[ "$1" == "ml4c3" ]]; then
+    LABDIR="mgh-neuro-cdac/projects/ml4c3"
+    MOUNTPOINT="/media/ml4c3"
 elif [[ "$1" == "lm4" ]]; then
     LABDIR="PHS-RISC-LM4/ConvertedData/bedmaster"
     MOUNTPOINT="/media/lm4-bedmaster"
