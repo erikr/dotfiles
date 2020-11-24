@@ -26,10 +26,6 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         sudo apt upgrade;
         sudo apt autoremove;
         sudo apt clean;
-        brew update;
-        brew upgrade;
-        brew cleanup;
-        brew doctor;
         conda update conda;
         conda update --all;
         conda clean -a;
