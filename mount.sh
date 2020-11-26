@@ -7,6 +7,9 @@ GROUP_USERNAME=aguirrelab
 if [[ "$1" == "ml4c3" ]]; then
     LABDIR="mgh-neuro-cdac/projects/ml4c3"
     MOUNTPOINT="/media/ml4c3"
+if [[ "$1" == "mad3" ]]; then
+    LABDIR="mgh-neuro-cdac/projects"
+    MOUNTPOINT="/media/mad3"
 elif [[ "$1" == "lm4" ]]; then
     LABDIR="PHS-RISC-LM4/ConvertedData/bedmaster"
     MOUNTPOINT="/media/lm4-bedmaster"

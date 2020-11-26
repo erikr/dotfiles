@@ -96,7 +96,7 @@ set exrc
 set secure
 
 " No tabs, and all tab chars become 4 space chars
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+set smarttab tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " Highlight searches
 set hlsearch
