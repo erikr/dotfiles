@@ -1,7 +1,7 @@
 LOGIN=er498
 SERVER=//mad3.partners.org
-GROUP_GROUPNAME=aguirrelab
-GROUP_USERNAME=aguirrelab
+GROUP_GROUPNAME=stultzlab
+GROUP_USERNAME=stultzlab
 
 # Set server within MAD3 and mount point on local machine
 if [[ "$1" == "ml4c3" ]]; then
@@ -19,9 +19,12 @@ elif [[ "$1" == "alarms" ]]; then
 elif [[ "$1" == "ecg" ]]; then
     LABDIR="PHS-RISC-LM4/MUSE_DATA"
     MOUNTPOINT="/media/lm4-ecg"
+elif [[ "$1" == "homedrive" ]]; then
+    SERVER="//cifshd.partners.org"
+    LABDIR="homedir$"
+    MOUNTPOINT="/media/$LOGIN"
 fi
 
-# Mount ERISOne
 if [[ "$1" == "erisone" ]]; then
     SERVER=//eris1fs2.partners.org
     MOUNTPOINT=/media/erisone
