@@ -135,7 +135,7 @@ hash -d dotfiles=~/dotfiles
 alias speedtest='~/dotfiles/speedtest-cli.py'
 
 # Print contents of CSV with perl, column, and less
-function prettycsv() {
+function csv() {
     perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
 }
 
