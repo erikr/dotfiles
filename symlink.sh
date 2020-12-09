@@ -5,6 +5,7 @@ for file in $files; do
     rm $HOME/$file
         
     if [[ "$1" == "make" ]]; then
-    echo "Making symlinks from $HOME/$file to $DIR/$file"
-    ln -s $DIR/$file $HOME/$file
+        echo "Making symlinks from $HOME/$file to $DIR/$file"
+        ln -s $DIR/$file $HOME/$file
+    fi
 done
