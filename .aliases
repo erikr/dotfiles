@@ -71,7 +71,8 @@ else # $OSTYPE must be darwin* == macos, so put mac-only aliases here%
     # -h: human-readable unit suffixes
     alias l="ls -lh"
 
-	alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+	alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+    alias jl="jupyter lab"
     alias js="jekyll serve"
     alias cpwd="pwd | tr -d '\n' | pbcopy"
 
