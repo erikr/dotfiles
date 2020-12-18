@@ -71,7 +71,7 @@ export EDITOR=$(which vim)
 source $HOME/.aliases
 
 # https://conda.io/projects/conda/en/latest/user-guide/troubleshooting.html#resolution-for-python-packages-make-sure-you-have-not-set-the-pythonpath-or-pythonhome-variable
-unset PYTHONPATH
+#unset PYTHONPATH
 
 # Set all path entries to unique
 # https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path
