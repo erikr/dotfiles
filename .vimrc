@@ -9,8 +9,12 @@ Plug 'plasticboy/vim-markdown'
 Plug 'psf/black'
 Plug 'mtdl9/vim-log-highlighting'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'vim-python/python-syntax'
 
 call plug#end()
+
+" Enable Python syntax highlighting
+let g:python_highlight_all = 1
 
 " Use the Solarized Dark theme
 syntax enable
