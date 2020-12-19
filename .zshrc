@@ -78,7 +78,10 @@ source $HOME/.aliases
 typeset -aU path
 
 # Set up solarized dircolors
-export LSCOLORS=exfxfeaeBxxehehbadacea
+# export LSCOLORS=exfxfeaeBxxehehbadacea
+
+# Set up Nord dircolors
+test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
 # Do not correct variables to dotfile versions
 CORRECT_IGNORE_FILE=".*"
