@@ -1,20 +1,25 @@
 call plug#begin('~/.vim/plugged')
 
 " vim-plug plugins
+
 Plug 'arcticicestudio/nord-vim'
-Plug 'ervandew/supertab'
 Plug 'djoshea/vim-autoread'
-Plug 'plasticboy/vim-markdown'
-Plug 'psf/black'
+Plug 'ervandew/supertab'
 Plug 'mtdl9/vim-log-highlighting'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'plasticboy/vim-markdown'
+Plug 'psf/black'
 Plug 'vim-python/python-syntax'
-" Plug 'altercation/vim-colors-solarized'
 " Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
 " To activate and use Nord Vim as your default color theme set
 colorscheme nord
+let g:airline_theme='nord'
+let g:airline_powerline_fonts = 1
 
 " Enable Python syntax highlighting
 let g:python_highlight_all = 1
