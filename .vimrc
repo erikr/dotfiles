@@ -1,8 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 " vim-plug plugins
-Plug 'itchyny/lightline.vim'
-Plug 'altercation/vim-colors-solarized'
+Plug 'arcticicestudio/nord-vim'
 Plug 'ervandew/supertab'
 Plug 'djoshea/vim-autoread'
 Plug 'plasticboy/vim-markdown'
@@ -10,21 +9,25 @@ Plug 'psf/black'
 Plug 'mtdl9/vim-log-highlighting'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-python/python-syntax'
-
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'itchyny/lightline.vim'
 call plug#end()
+
+" To activate and use Nord Vim as your default color theme set
+colorscheme nord
 
 " Enable Python syntax highlighting
 let g:python_highlight_all = 1
 
 " Use the Solarized Dark theme
-syntax enable
-set background=dark
-colorscheme solarized
-let g:solarized_termtrans=1
-" let g:solarized_contrast = "high"
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ }
+" syntax enable
+" set background=dark
+" colorscheme solarized
+" let g:solarized_termtrans=1
+" " let g:solarized_contrast = "high"
+" let g:lightline = {
+"       \ 'colorscheme': 'solarized',
+"       \ }
 
 set t_Co=256
 
@@ -101,24 +104,18 @@ set secure
 
 " No tabs, and all tab chars become 4 space chars
 set smarttab tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-
 " Highlight searches
 set hlsearch
-
 " Smart case
 set ignorecase
 set smartcase
-
 " Highlight dynamically as pattern is typed
 set incsearch
-
 " Always show status line
 set laststatus=2
-
 " Enable mouse in all modes
 set mouse=a
 set ttymouse=sgr
-
 " Disable error bells
 set noerrorbells
 " Don’t reset cursor to start of line when moving around.
@@ -133,13 +130,10 @@ set showmode
 set title
 " Show the (partial) command as it’s being typed
 set showcmd
-
 " Enable line numbers
 set number
-
 " Toggle paste mode
 set pastetoggle=<F5>
-
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
 	let save_cursor = getpos(".")
@@ -149,10 +143,8 @@ function! StripWhitespace()
 	call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
-
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
-
 " Automatic commands
 if has("autocmd")
 	" Enable file type detection
