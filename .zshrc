@@ -154,3 +154,5 @@ fi
 
 # Add GPG key
 export GPG_TTY=$(tty)
+
+export HOMEBREW_GITHUB_API_TOKEN=9022f0bfbaec23f32be1b45bd1a77a37aaee6cf6
