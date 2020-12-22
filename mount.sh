@@ -1,7 +1,7 @@
 LOGIN=er498
 SERVER=//mad3.partners.org
-GROUP_GROUPNAME=stultzlab
-GROUP_USERNAME=stultzlab
+GROUP_GROUPNAME=aguirrelab
+GROUP_USERNAME=aguirrelab
 
 # Set server within MAD3 and mount point on local machine
 if [[ "$1" == "ml4c3" ]]; then
