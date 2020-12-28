@@ -128,6 +128,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     CONDA_PATH_PREFIX="$HOME/miniconda3"
+    export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
 fi
 
@@ -154,5 +155,3 @@ fi
 
 # Add GPG key
 export GPG_TTY=$(tty)
-
-export HOMEBREW_GITHUB_API_TOKEN=9022f0bfbaec23f32be1b45bd1a77a37aaee6cf6

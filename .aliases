@@ -44,16 +44,16 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # Report file system disk space usage, excluding irrelevant file systems
     alias df='df -h -x squashfs -x tmpfs -x devtmpfs'
 
-else # $OSTYPE must be darwin* == macos, so put mac-only aliases here%
+else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
     function update () {
         omz update;
         sudo softwareupdate --all --install --force;
-        gem update;
-        gem cleanup;
         brew update;
         brew upgrade;
         brew cleanup;
         brew doctor;
+        gem update;
+        gem cleanup;
         conda update conda;
         conda update --all;
         conda clean -a;
