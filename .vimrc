@@ -6,14 +6,11 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'djoshea/vim-autoread'
 Plug 'ervandew/supertab'
 Plug 'mtdl9/vim-log-highlighting'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'plasticboy/vim-markdown'
 Plug 'psf/black'
 Plug 'vim-python/python-syntax'
-" Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
 " To activate and use Nord Vim as your default color theme set
@@ -23,16 +20,6 @@ let g:airline_powerline_fonts = 1
 
 " Enable Python syntax highlighting
 let g:python_highlight_all = 1
-
-" Use the Solarized Dark theme
-" syntax enable
-" set background=dark
-" colorscheme solarized
-" let g:solarized_termtrans=1
-" " let g:solarized_contrast = "high"
-" let g:lightline = {
-"       \ 'colorscheme': 'solarized',
-"       \ }
 
 set t_Co=256
 
