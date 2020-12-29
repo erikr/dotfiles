@@ -11,6 +11,7 @@ Plug 'psf/black'
 Plug 'vim-python/python-syntax'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 " To activate and use Nord Vim as your default color theme set
@@ -38,7 +39,8 @@ endif
 
 " Disable markdown folding
 let g:vim_markdown_folding_disabled = 1
-
+" Disable markdown concealing
+let g:vim_markdown_conceal = 0
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
 
