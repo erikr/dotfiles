@@ -77,9 +77,6 @@ source $HOME/.aliases
 # https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path
 typeset -aU path
 
-# Set up solarized dircolors
-# export LSCOLORS=exfxfeaeBxxehehbadacea
-
 # Set up Nord dircolors
 test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
@@ -133,7 +130,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 # Activate conda
-source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh 
+source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh
 
 # If on linux and logged in to mithril or anduril, start Dropbox too
 if [[ -z "$TMUX" ]]; then
@@ -146,15 +143,7 @@ if [[ -z "$TMUX" ]]; then
     fi
 fi
 
-## Check list of installed conda envs; if desired env is there, activate it
-#CONDA_CUSTOM_ENV="er"
-#if [[ $(conda env list | awk '{print $1}' ) = *"$CONDA_CUSTOM_ENV"* ]]; then
-#    conda deactivate
-#    conda activate $CONDA_CUSTOM_ENV
-#fi;
-
 # Add GPG key
 export GPG_TTY=$(tty)
 
-# added by travis gem
-[ ! -s /Users/erik/.travis/travis.sh ] || source /Users/erik/.travis/travis.sh
+
