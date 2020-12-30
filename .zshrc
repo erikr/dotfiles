@@ -155,3 +155,6 @@ fi
 
 # Add GPG key
 export GPG_TTY=$(tty)
+
+# added by travis gem
+[ ! -s /Users/erik/.travis/travis.sh ] || source /Users/erik/.travis/travis.sh

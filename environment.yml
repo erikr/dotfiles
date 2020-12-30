@@ -6,6 +6,7 @@ channels:
     - pytorch
 dependencies:
     - python=3.8
+    - pip
     - conda-forge::ncurses
     - numpy
     - pandas
@@ -28,10 +29,6 @@ dependencies:
     - tqdm
     - pytest
     - numcodecs
-    - pytorch
-    - torchvision
-    - torchaudio
-    - cudatoolkit=10.2
     - pip:
         - black
         - modin[all]
