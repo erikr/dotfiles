@@ -126,6 +126,7 @@ fi
 hash -d gdr=~"/Google Drive"
 hash -d db=~"/Dropbox (Partners HealthCare)"
 hash -d dl=~/Downloads
+hash -d ml=~/ml4c3
 hash -d dt=~/Desktop
 hash -d blog=~/erikr.github.io
 hash -d dotfiles=~/dotfiles
