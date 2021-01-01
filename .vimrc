@@ -38,9 +38,12 @@ else
 endif
 
 " Disable markdown folding
-let g:vim_markdown_folding_disabled = 1
-" Disable markdown concealing
-let g:vim_markdown_conceal = 0
+let g:vim_markdown_folding_disabled = 0
+
+" Let indentLine use current conceal options
+let g:indentLine_conceallevel  = &conceallevel
+let g:indentLine_concealcursor = &concealcursor
+
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
 
