@@ -37,7 +37,7 @@ else
 endif
 
 " Disable markdown folding
-let g:vim_markdown_folding_disabled = 0
+let g:vim_markdown_folding_disabled = 1 
 
 " Let indentLine use current conceal options
 let g:indentLine_conceallevel  = &conceallevel
