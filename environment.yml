@@ -29,6 +29,7 @@ dependencies:
     - tqdm
     - pytest
     - numcodecs
+    - tmux
     - pip:
         - black
         - modin[all]
