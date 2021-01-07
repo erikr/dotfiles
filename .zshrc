@@ -77,9 +77,6 @@ source $HOME/.aliases
 # https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path
 typeset -aU path
 
-# Set up Nord dircolors
-test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
-
 # Do not correct variables to dotfile versions
 CORRECT_IGNORE_FILE=".*"
 

@@ -2,7 +2,7 @@ call plug#begin('~/.vim/plugged')
 
 " vim-plug plugins
 
-Plug 'arcticicestudio/nord-vim'
+Plug 'altercation/vim-colors-solarized'
 Plug 'djoshea/vim-autoread'
 Plug 'ervandew/supertab'
 Plug 'mtdl9/vim-log-highlighting'
@@ -14,20 +14,18 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 call plug#end()
 
-" To activate and use Nord Vim as your default color theme set
-colorscheme nord
-let g:airline_theme='nord'
-let g:airline_powerline_fonts = 1
+colorscheme solarized
+let g:airline_theme='solarized'
+let g:airline_solarized_bg='dark'
 
 " Enable Python syntax highlighting
 let g:python_highlight_all = 1
-
-set t_Co=256
+syntax on
 
 " Disable defaults from vim-ftplugin-python
 let g:python_recommended_style = 0
 
-set nocompatible              " be iMproved, required
+set nocompatible 
 
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
