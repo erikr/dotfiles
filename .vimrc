@@ -14,13 +14,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 call plug#end()
 
+syntax enable
+set background=dark
 colorscheme solarized
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
 
 " Enable Python syntax highlighting
 let g:python_highlight_all = 1
-syntax on
 
 " Disable defaults from vim-ftplugin-python
 let g:python_recommended_style = 0
