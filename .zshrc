@@ -27,6 +27,7 @@ setopt extended_glob
 # Pure theme
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
+PURE_CMD_MAX_EXEC_TIME=999
 LIGHTGREY=default
 zstyle :prompt:pure:user color $LIGHTGREY
 zstyle :prompt:pure:host color $LIGHTGREY
