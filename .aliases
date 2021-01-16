@@ -148,6 +148,16 @@ function gclb() {
     done
 }
 
+# Lowercase all files
+function lowercase() {
+    for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done
+}
+
+# Get distribution of file sizes
+function filesizes() {
+    find . -type f -print0 | xargs -0 ls -l | awk '{ n=int(log($5)/log(2)); if (n<10) { n=10; } size[n]++ } END { for (i in size) printf("%d %d\n", 2^i, size[i]) }' | sort -n | awk 'function human(x) { x[1]/=1024; if (x[1]>=1024) { x[2]++; human(x) } } { a[1]=$1; a[2]=0; human(a); printf("%3d%s: %6d\n", a[1],substr("kMGTEPYZ",a[2]+1,1),$2) }'
+}
+
 # sts_ecg project: print AUCs in a results directory
 # Log files are stored in subdirectories of current directly: ./*/log*
 # Log files contain output like: ROC AUC * {label} * = 0.NNN
