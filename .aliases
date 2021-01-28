@@ -178,4 +178,42 @@ function aucs() {
     done
 }
 
+# Function to easily mount;
+# syntax is 'mount $USERNAME $SHORTCUT_FOR_DESTINATION
+# example: mount er498 ml4c3
+function mount() {
+    LOGIN=$1
+    SERVER=//mad3.partners.org
+    GROUP_GROUPNAME=aguirrelab
+    GROUP_USERNAME=aguirrelab
 
+    # Set server within MAD3 and mount point on local machine
+    if [[ "$2" == "ml4c3" ]]; then
+        LABDIR="mgh-neuro-cdac/projects/ml4c3"
+        MOUNTPOINT="/media/ml4c3"
+    elif [[ "$2" == "mad3" ]]; then
+        LABDIR="mgh-neuro-cdac/projects"
+        MOUNTPOINT="/media/mad3"
+    elif [[ "$2" == "lm4" ]]; then
+        LABDIR="PHS-RISC-LM4/ConvertedData/bedmaster"
+        MOUNTPOINT="/media/lm4-bedmaster"
+    elif [[ "$2" == "alarms" ]]; then
+        LABDIR="PHS-RISC-LM4/OriginalData/bedmaster/alarms"
+        MOUNTPOINT="/media/lm4-alarms"
+    elif [[ "$2" == "ecg" ]]; then
+        LABDIR="PHS-RISC-LM4/MUSE_DATA"
+        MOUNTPOINT="/media/lm4-ecg"
+    elif [[ "$2" == "homedrive" ]]; then
+        SERVER="//cifshd.partners.org"
+        LABDIR="homedir$"
+        MOUNTPOINT="/media/$LOGIN"
+    fi
+
+    if [[ "$2" == "erisone" ]]; then
+        SERVER=//eris1fs2.partners.org
+        MOUNTPOINT=/media/erisone
+        sudo mount -t cifs -o user=$LOGIN,uid=$(id -u),gid=$(id -g),vers=1.0 $SERVER/$USER $MOUNTPOINT
+    else
+        sudo mount -t cifs -o user=$LOGIN,uid=$(id -u $GROUP_USERNAME),gid=$(id -g $GROUP_GROUPNAME),noperm,domain=partners $SERVER/$LABDIR $MOUNTPOINT
+    fi
+}
