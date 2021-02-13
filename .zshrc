@@ -12,7 +12,7 @@ export PATH="/sbin:$PATH"
 export PATH="/usr/local:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
+export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"
 
 # For compilers to find ruby you may need to set:
 export LDFLAGS="-L/usr/local/opt/ruby/lib"
@@ -128,7 +128,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 # Activate conda
-source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh
+source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh  # commented out by conda initialize
 
 # If on linux and logged in to mithril or anduril, start Dropbox too
 if [[ -z "$TMUX" ]]; then
@@ -143,5 +143,3 @@ fi
 
 # Add GPG key
 export GPG_TTY=$(tty)
-
-

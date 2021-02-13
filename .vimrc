@@ -12,6 +12,7 @@ Plug 'vim-python/python-syntax'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
+Plug 'lifepillar/vim-solarized8'
 call plug#end()
 
 syntax enable
