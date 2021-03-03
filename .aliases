@@ -124,7 +124,7 @@ else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
     }
 fi
 
-hash -d gdr=~"/Google Drive"
+hash -d gd=~"/Google Drive"
 hash -d icloud=~"/Library/Mobile Documents/com~apple~CloudDocs"
 hash -d db=~"/Dropbox (Partners HealthCare)"
 hash -d dl=~/Downloads
