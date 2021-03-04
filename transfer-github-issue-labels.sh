@@ -13,8 +13,8 @@
 GH_TOKEN=$1
 
 # The source repository whose labels to copy.
-SRC_GH_USER=aguirre-lab
-SRC_GH_REPO=ml4c3
+SRC_GH_USER=prometheus-bio
+SRC_GH_REPO=dse
 
 # The target repository to add or update labels.
 TGT_GH_USER=$2
