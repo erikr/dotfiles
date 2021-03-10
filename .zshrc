@@ -59,7 +59,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # Oh-my-zsh plugins live in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git tmux zsh-syntax-highlighting zsh-autosuggestions gitfast)
+plugins=(git tmux docker docker-compose zsh-syntax-highlighting zsh-autosuggestions gitfast)
 
 ZSH_DISABLE_COMPFIX="true"
 export ZSH=$HOME/.oh-my-zsh
@@ -129,17 +129,6 @@ fi
 
 # Activate conda
 source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh  # commented out by conda initialize
-
-# If on linux and logged in to mithril or anduril, start Dropbox too
-if [[ -z "$TMUX" ]]; then
-    if [[ "$OSTYPE" == "linux-gnu" ]]; then
-        if [[ $(hostname) = "mithril" ]] || \
-           [[ $(hostname) = "anduril" ]]; then
-            dropbox start
-        fi
-        # tmux attach -t $(hostname) || tmux new -s $(hostname)
-    fi
-fi
 
 # Add GPG key
 export GPG_TTY=$(tty)
