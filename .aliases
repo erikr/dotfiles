@@ -127,15 +127,12 @@ fi
 hash -d gd=~"/Google Drive"
 hash -d icloud=~"/Library/Mobile Documents/com~apple~CloudDocs"
 hash -d db=~"/Dropbox (Partners HealthCare)"
+hash -d od=~"/OneDrive - Prometheus Laboratories"
 hash -d dl=~/Downloads
 hash -d ml=~/ml4c3
 hash -d dt=~/Desktop
 hash -d blog=~/erikr.github.io
 hash -d dotfiles=~/dotfiles
-
-
-# Shell scripts and utilities
-alias speedtest='~/dotfiles/speedtest-cli.py'
 
 # Print contents of CSV with perl, column, and less
 function csv() {

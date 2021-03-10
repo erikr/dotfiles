@@ -5,8 +5,10 @@ _site/
 # vim
 .vim
 
-# CSV files
-*.csv
+# Office
+~$*.docx
+~$*.pptx
+~$*.xlsx
 
 # Python notebooks
 .ipynb_checkpoints
