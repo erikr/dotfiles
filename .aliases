@@ -134,6 +134,15 @@ hash -d dt=~/Desktop
 hash -d blog=~/erikr.github.io
 hash -d dotfiles=~/dotfiles
 
+# Kill GlobalProtect
+function globalprotect() {
+    if [[ "$1" == "stop" ]]; then
+        launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*
+    elif [[ "$1" == "start" ]]; then
+        launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*
+    fi
+}
+
 # Print contents of CSV with perl, column, and less
 function csv() {
     perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K

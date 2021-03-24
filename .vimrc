@@ -8,16 +8,16 @@ Plug 'ervandew/supertab'
 Plug 'mtdl9/vim-log-highlighting'
 Plug 'plasticboy/vim-markdown'
 Plug 'psf/black'
-Plug 'vim-python/python-syntax'
+Plug 'ruanyl/vim-gh-line'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Yggdroot/indentLine'
-Plug 'lifepillar/vim-solarized8'
+Plug 'vim-python/python-syntax'
 call plug#end()
 
 syntax enable
 set background=dark
 colorscheme solarized
+
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
 
@@ -68,22 +68,31 @@ set autoindent
 
 " Remove hidden characters
 set nolist
+
 " Make Vim more useful
 set nocompatible
+
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
+
 " Enhance command-line completion
 set wildmenu
+
 " Allow cursor keys in insert mode
 "set esckeys
+
 " Allow backspace in insert mode
 set backspace=indent,eol,start
+
 " Optimize for fast terminal connections
 set ttyfast
+
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
+
 " Change mapleader
-let mapleader=","
+"let mapleader="\"
+
 " Don’t add empty newlines at the end of files
 set binary
 set noeol
@@ -95,42 +104,58 @@ set noswapfile
 " Respect modeline in files
 set modeline
 set modelines=4
+
 " Enable per-directory .vimrc files and disable unsafe commands in them
 set exrc
 set secure
 
 " No tabs, and all tab chars become 4 space chars
 set smarttab tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+
 " Highlight searches
 set hlsearch
+
 " Smart case
 set ignorecase
 set smartcase
+
 " Highlight dynamically as pattern is typed
 set incsearch
+
 " Always show status line
 set laststatus=2
+
 " Enable mouse in all modes
 set mouse=a
 set ttymouse=sgr
+
 " Disable error bells
 set noerrorbells
+
 " Don’t reset cursor to start of line when moving around.
 set nostartofline
+
 " Show the cursor position
 set ruler
+
 " Don’t show the intro message when starting Vim
 set shortmess=atI
+
 " Show the current mode
 set showmode
+
 " Show the filename in the window titlebar
 set title
+
 " Show the (partial) command as it’s being typed
 set showcmd
+
 " Enable line numbers
 set number
+
 " Toggle paste mode
 set pastetoggle=<F5>
+
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
 	let save_cursor = getpos(".")
@@ -140,8 +165,10 @@ function! StripWhitespace()
 	call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
+
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
+
 " Automatic commands
 if has("autocmd")
 	" Enable file type detection
