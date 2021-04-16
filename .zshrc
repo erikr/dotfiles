@@ -84,42 +84,8 @@ CORRECT_IGNORE_FILE=".*"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 
 # Linux
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
- 
-    # ERISOne
-    if [[ $(hostname) = *research.partners.org ]] || [[ $(hostname) = cmu* ]]; then
-        echo "Setting up .zshrc on ERISOne"
-
-        # Update LD_LIBRARY_PATH so tmux sees custom-installed libevent stuff
-        export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HOME}/local/lib
-
-        # Set up modules
-        module purge
-        module load git/2.17.0
-        module load tmux/2.3
-        module load vim/8.1-pyvim
-        module rm Extras-anaconda2/default
-
-        CONDA_PATH_PREFIX="$HOME/miniconda3"
-
-    # Stultz Lab workstations
-    elif [[ $(hostname) = "anduril" ]]; then
-        CONDA_PATH_PREFIX="/home/stultzlab/miniconda3"
- 
-    # Aguirre Lab workstations
-    elif [[ $(hostname) = "mithril" ]] || \
-         [[ $(hostname) = "everest" ]] || \
-         [[ $(hostname) = "montserrat" ]] || \
-         [[ $(hostname) = "olympus" ]]; then
-        CONDA_PATH_PREFIX="/home/aguirrelab/miniconda3"
-
-        # Set postgres database name
-        export PGDATABASE="ecgs"
-
-    # MIT Quanta server
-    elif [[ $(hostname) = stultzlab* ]]; then
-        CONDA_PATH_PREFIX="/opt/miniconda"
-    fi
+if [[ "$OSTYPE" == "linux-gnu" ]]; then 
+    CONDA_PATH_PREFIX="$HOME/miniconda3"
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     CONDA_PATH_PREFIX="$HOME/miniconda3"
@@ -128,7 +94,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 # Activate conda
-source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh  # commented out by conda initialize
+source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh 
 
 # Add GPG key
 export GPG_TTY=$(tty)
@@ -138,3 +104,4 @@ if [ -f '/Users/erik/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/erik/googl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/erik/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/erik/google-cloud-sdk/completion.zsh.inc'; fi
+
