@@ -84,14 +84,15 @@ CORRECT_IGNORE_FILE=".*"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 
 # rbenv
-elif [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
 fi
 
 # conda
 GMETADATA_ADDR=`dig +short metadata.google.internal`
-if [[ "${GMETADATA_ADDR}" == "" ]]; then
+if [[ "${GMETADATA_ADDR}" == "" ]]
+then
     CONDA_PATH_PREFIX="$HOME/miniconda3"
 else 
     CONDA_PATH_PREFIX="/apps/miniconda3"
