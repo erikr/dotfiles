@@ -1,9 +1,8 @@
-name: er
+name: dse
 channels:
     - conda-forge
     - anaconda
     - defaults
-    - pytorch
 dependencies:
     - python=3.8
     - pip
