@@ -83,17 +83,20 @@ CORRECT_IGNORE_FILE=".*"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 
-# Linux
-if [[ "$OSTYPE" == "linux-gnu" ]]; then 
-    CONDA_PATH_PREFIX="$HOME/miniconda3"
-
+# rbenv
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    CONDA_PATH_PREFIX="$HOME/miniconda3"
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
 fi
 
-# Activate conda
+# conda
+GMETADATA_ADDR=`dig +short metadata.google.internal`
+if [[ "${GMETADATA_ADDR}" == "" ]]; then
+    CONDA_PATH_PREFIX="$HOME/miniconda3"
+else 
+    CONDA_PATH_PREFIX="/apps/miniconda3"
+fi
+
 source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh 
 
 # Add GPG key
