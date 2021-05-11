@@ -27,7 +27,6 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         conda update conda;
         conda update --all;
         conda clean -a;
-        gcloud components update;
     }
 
     # -l: long format
@@ -58,7 +57,6 @@ else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
         conda update conda;
         conda update --all;
         conda clean -a;
-        gcloud components update;
         sudo purge;
     }
 
