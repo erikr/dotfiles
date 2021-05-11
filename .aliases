@@ -8,10 +8,6 @@ alias sudo='sudo '
 # Replace vi with vim
 alias vi='vim'
 
-# Clean up LaunchServices to remove duplicates in the “Open With” menu,
-# recursively delete .DS_Store, Icon^M, and .ipynb_checkpoints
-alias cleanup="find . \( -type f -name '*.DS_Store' -o -type d -name '.ipynb_checkpoints' -type d -name '.cache' \) -ls -exec rm -rv {} + && find . -name 'Icon' -ls -delete && /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
-
 # Empty the Trash on all mounted volumes and the main HDD.
 # Also, clear Apple’s System Logs to improve shell startup speed.
 # Finally, clear download history from quarantine. https://mths.be/bum
@@ -28,6 +24,10 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         conda update --all;
         conda clean -a;
     }
+
+    # Clean up LaunchServices to remove duplicates in the “Open With” menu,
+    # recursively delete .DS_Store, Icon^M, and .ipynb_checkpoints
+    alias cleanup="find . \( -type f -name '*.DS_Store' -o -type d -name '.ipynb_checkpoints' -type d -name '.cache' \) -ls -exec rm -rv {} + && find . -name 'Icon' -ls -delete"
 
     # -l: long format
     # -F: displays slash after directory, etc.
@@ -59,6 +59,10 @@ else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
         conda clean -a;
         sudo purge;
     }
+
+    # Clean up LaunchServices to remove duplicates in the “Open With” menu,
+    # recursively delete .DS_Store, Icon^M, and .ipynb_checkpoints
+    alias cleanup="find . \( -type f -name '*.DS_Store' -o -type d -name '.ipynb_checkpoints' -type d -name '.cache' \) -ls -exec rm -rv {} + && find . -name 'Icon' -ls -delete && /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 
     # --group-directories-first: self-explanatory
     # --color=auto: use colors
