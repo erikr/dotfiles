@@ -102,10 +102,3 @@ source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh
 
 # Add GPG key
 export GPG_TTY=$(tty)
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/erik/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/erik/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/erik/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/erik/google-cloud-sdk/completion.zsh.inc'; fi
