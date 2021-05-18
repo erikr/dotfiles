@@ -1,3 +1,7 @@
+# Snowflake
+*.log
+*.log_bootstrap
+
 # Jekyll
 _site/
 .jekyll-cache/

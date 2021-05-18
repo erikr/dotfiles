@@ -60,6 +60,9 @@ else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
         sudo purge;
     }
 
+    # Snowflake CLI
+    alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
+
     # Clean up LaunchServices to remove duplicates in the “Open With” menu,
     # recursively delete .DS_Store, Icon^M, and .ipynb_checkpoints
     alias cleanup="find . \( -type f -name '*.DS_Store' -o -type d -name '.ipynb_checkpoints' -type d -name '.cache' \) -ls -exec rm -rv {} + && find . -name 'Icon' -ls -delete && /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
