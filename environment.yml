@@ -28,6 +28,7 @@ dependencies:
     - pytest
     - numcodecs
     - tmux
+    - boto3
     - pip:
         - black
         - modin[all]
