@@ -1,34 +1,32 @@
 name: dse
 channels:
-    - conda-forge
-    - anaconda
     - defaults
+    - anaconda
 dependencies:
     - python=3.8
     - pip
-    - conda-forge::ncurses
     - numpy
     - pandas
     - scipy
     - scikit-learn
+    - scikit-learn-intelex
     - matplotlib
     - ipympl
     - seaborn
-    - pre-commit
     - pylint
-    - identify
     - setuptools
     - toml
-    - isort
     - h5py
     - jupyterlab
     - ipyparallel
-    - nodejs
     - tqdm
     - pytest
     - numcodecs
-    - tmux
     - boto3
+    - r-essentials
+    - r-base
     - pip:
         - black
         - modin[all]
+        - pre-commit
+        - isort
