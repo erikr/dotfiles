@@ -48,6 +48,9 @@ let g:vim_markdown_folding_disabled = 1
 let g:indentLine_conceallevel  = &conceallevel
 let g:indentLine_concealcursor = &concealcursor
 
+" Mouse
+set mouse=a
+
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
 
