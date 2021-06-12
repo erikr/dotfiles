@@ -5,8 +5,9 @@ alias ...="cd ../.."
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
-# Replace vi with vim
-alias vi='vim'
+# Neovim
+alias vi='nvim'
+alias vim='nvim'
 
 # Empty the Trash on all mounted volumes and the main HDD.
 # Also, clear Apple’s System Logs to improve shell startup speed.
@@ -138,6 +139,7 @@ hash -d ml=~/ml4c3
 hash -d dt=~/Desktop
 hash -d blog=~/erikr.github.io
 hash -d dotfiles=~/dotfiles
+hash -d init.vim=~/dotfiles/init.vim
 
 # Kill GlobalProtect
 function globalprotect() {
