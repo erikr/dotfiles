@@ -91,43 +91,6 @@ else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
 
     # Re-index everything in Spotlight
     alias rebuildspotlight="sudo mdutil -E /"
-
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-    # Manage Jupyter Lab on remote server  #
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-    # Set default values that can be overidden by input args
-    REMOTEUSER=erik
-    SERVER=mithril
-    PORT=3745
-
-    # Start Jupyter lab session over SSH
-    # remote_nb_start user server port
-    # e.g. "remote_nb_start erik mithril 3745"
-    function remote_nb_start () {
-        ssh -f ${1:-$REMOTEUSER}@${2:-$SERVER} \
-            ". ~/.zshrc ; jupyter lab --no-browser --port=${3:-$PORT}"
-    }
-
-    # Forward port and open browser to localhost at that port to see the Lab session
-    # User should manually call this function, rather than calling it inside remote_nb_start,
-    # because starting Jupyter is slow. The notebook must finish initializing before
-    # forwarding the port and opening a browser.
-    # port_forward user server port
-    # e.g. "port_forward erik mithril 3745"
-    function port_forward () {
-        ssh -N -f -L localhost:${3:-$PORT}:localhost:${3:-$PORT} \
-            ${1:-$REMOTEUSER}@${2:-$SERVER}; open http://localhost:${3:-$PORT} &
-    }
-
-    # If it is your first time opening the notebook on local, click on the URL shown in the
-    # terminal output to open localhost with the token, or set a password.
-
-    # Shut down remote Jupyter server, and kill local listening process
-    function remote_nb_stop () {
-        ssh -f ${1:-$REMOTEUSER}@${2:-$SERVER} \
-            ". ~/.zshrc ; jupyter notebook stop ${3:-$PORT}" ;
-        kill $(lsof -ti :${3:-$PORT}) &
-    }
 fi
 
 hash -d gd=~"/Google Drive"
