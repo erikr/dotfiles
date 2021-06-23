@@ -45,6 +45,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # Report file system disk space usage, excluding irrelevant file systems
     alias df='df -h -x squashfs -x tmpfs -x devtmpfs'
 
+    # Snowflake
+    alias snowsql=/home/ubuntu/.snowsql/1.2.3/snowsql
+
 else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
     function update () {
         omz update;
@@ -60,9 +63,6 @@ else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
         conda clean -a;
         sudo purge;
     }
-
-    # Snowflake CLI
-    alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 
     # Clean up LaunchServices to remove duplicates in the “Open With” menu,
     # recursively delete .DS_Store, Icon^M, and .ipynb_checkpoints
@@ -91,6 +91,9 @@ else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
 
     # Re-index everything in Spotlight
     alias rebuildspotlight="sudo mdutil -E /"
+    
+    # Snowflake
+    alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 fi
 
 hash -d gd=~"/Google Drive"
