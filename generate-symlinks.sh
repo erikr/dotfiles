@@ -7,7 +7,8 @@ for file in $files; do
     ln -s $DIR/$file $HOME/$file
 done
 
-echo "Symlinking $DIR/init.vim to $HOME/.config/nvim/init.vim"
 NVIM_DIR=$HOME/.config/nvim
+echo "Symlinking $DIR/init.vim to $NVIM_DIR/init.vim"
 mkdir -p $NVIM_DIR
+rm $NVIM_DIR/init.vim
 ln -s $DIR/init.vim $NVIM_DIR/init.vim
