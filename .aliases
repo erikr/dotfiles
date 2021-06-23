@@ -46,7 +46,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     alias df='df -h -x squashfs -x tmpfs -x devtmpfs'
 
     # Snowflake
-    alias snowsql=/home/ubuntu/.snowsql/1.2.3/snowsql
+    alias snowsql=/home/ubuntu/.snowsql/1.2.15/snowsql
 
 else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
     function update () {
