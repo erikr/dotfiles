@@ -71,9 +71,6 @@ export EDITOR=$(which vim)
 # Source aliases
 source $HOME/.aliases
 
-# https://conda.io/projects/conda/en/latest/user-guide/troubleshooting.html#resolution-for-python-packages-make-sure-you-have-not-set-the-pythonpath-or-pythonhome-variable
-#unset PYTHONPATH
-
 # Set all path entries to unique
 # https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path
 typeset -aU path
@@ -92,6 +89,10 @@ fi
 # conda
 CONDA_PATH_PREFIX="$HOME/miniconda3"
 source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh 
+
+# Check for default conda env and activate if found
+DEFAULT_ENV="dse"
+conda activate $DEFAULT_ENV
 
 # Add GPG key
 export GPG_TTY=$(tty)
