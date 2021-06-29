@@ -4,7 +4,7 @@
 # Source: https://douglascayers.com/2019/08/01/how-to-export-and-import-github-issue-labels-between-projects/
 
 # Call this script via:
-# bash tranfser-github-issue-labels.sh PERSONAL_ACCESS_TOKEN gh_owner gh_repo_name
+# bash transfer-github-issue-labels.sh PERSONAL_ACCESS_TOKEN gh_owner gh_repo_name
 
 # Provide a personal access token that can
 # access the source and target repositories.
