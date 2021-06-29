@@ -13,18 +13,16 @@
 GH_TOKEN=$1
 
 # The source repository whose labels to copy.
-SRC_GH_USER=prometheus-bio
-SRC_GH_REPO=atlas
+SRC_GH_USER=erikr
+SRC_GH_REPO=dotfiles
 
 # The target repository to add or update labels.
 TGT_GH_USER=$2
 TGT_GH_REPO=$3
 
-# ---------------------------------------------------------
-
 # Headers used in curl commands
-GH_ACCEPT_HEADER="Accept: application/vnd.github.symmetra-preview+json"
-GH_AUTH_HEADER="Authorization: Bearer $GH_TOKEN"
+GH_ACCEPT_HEADER="Accept: application/vnd.github.v3+json"
+GH_AUTH_HEADER="Authorization: token $GH_TOKEN"
 
 # Bash for-loop over JSON array with jq
 # https://starkandwayne.com/blog/bash-for-loop-over-json-array-using-jq/
