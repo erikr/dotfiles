@@ -9,7 +9,7 @@ call plug#begin(stdpath('config') . '/plugged')
 " vim-plug plugins
 Plug 'scrooloose/nerdcommenter'
 Plug 'zchee/deoplete-jedi'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'altercation/vim-colors-solarized'
 Plug 'djoshea/vim-autoread'
 Plug 'ervandew/supertab'

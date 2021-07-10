@@ -30,4 +30,4 @@ dependencies:
         - modin[all]
         - pre-commit
         - isort
-        - neovim
+        - pynvim

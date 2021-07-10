@@ -91,8 +91,11 @@ CONDA_PATH_PREFIX="$HOME/miniconda3"
 source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh 
 
 # Check for default conda env and activate if found
-DEFAULT_ENV="dse"
-conda activate $DEFAULT_ENV
+#DEFAULT_ENV="dse"
+#conda activate $DEFAULT_ENV
 
 # Add GPG key
 export GPG_TTY=$(tty)
+
+# added by Snowflake SnowSQL installer v1.2
+export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
