@@ -1,3 +1,11 @@
+# https://superuser.com/questions/544989/does-tmux-sort-the-path-variable
+# Clear PATH before path_helper executes; will prevent it from prepending the default
+# PATH to your (previously) chosen PATH
+if [ -f /etc/profile ]; then
+    PATH=""
+    source /etc/profile
+fi
+
 setopt AUTO_CD
 
 # Set key binding
@@ -12,14 +20,6 @@ export PATH="/sbin:$PATH"
 export PATH="/usr/local:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"
-
-# For compilers to find ruby you may need to set:
-export LDFLAGS="-L/usr/local/opt/ruby/lib"
-export CPPFLAGS="-I/usr/local/opt/ruby/include"
-
-# For pkg-config to find ruby you may need to set:
-export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 
 # Enable globbing
 setopt extended_glob
@@ -88,16 +88,15 @@ export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/erik/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/erik/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/erik/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/Users/erik/mambaforge/etc/profile.d/conda.sh"
+    if [ -f "/Users/erik/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/erik/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/erik/mambaforge/bin:$PATH"
+        export PATH="/Users/erik/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
