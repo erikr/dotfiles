@@ -1,3 +1,5 @@
+DISABLE_MAGIC_FUNCTIONS=true
+
 # https://superuser.com/questions/544989/does-tmux-sort-the-path-variable
 # Clear PATH before path_helper executes; will prevent it from prepending the default
 # PATH to your (previously) chosen PATH
