@@ -47,6 +47,8 @@ else
     # <<< conda initialize <<<
 fi
 
+DISABLE_MAGIC_FUNCTIONS=true
+
 setopt AUTO_CD
 
 # Set key binding
