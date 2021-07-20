@@ -80,22 +80,24 @@ CORRECT_IGNORE_FILE=".*"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 
-# rbenv
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
-fi
-
-# conda
-CONDA_PATH_PREFIX="$HOME/miniconda3"
-source $CONDA_PATH_PREFIX/etc/profile.d/conda.sh 
-
-# Check for default conda env and activate if found
-#DEFAULT_ENV="dse"
-#conda activate $DEFAULT_ENV
-
 # Add GPG key
 export GPG_TTY=$(tty)
 
 # added by Snowflake SnowSQL installer v1.2
 export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/erik/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/erik/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/Users/erik/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/erik/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

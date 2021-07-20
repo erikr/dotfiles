@@ -158,6 +158,13 @@ function aucs() {
 		tac "$file" | grep -m 1 -hoE "ROC AUC.*$1.*= 0.[0-9]{3}" | grep -hoE "0.[0-9]{3}"
     done
 }
+function praucs() {
+    for file in */log*
+    do
+		tac "$file" | grep -m 1 -hoE "test split: prAUC sts_death.* 0.[0-9]{3}" | grep -hoE "0.[0-9]{3}"
+    done
+}
+
 
 # Function to easily mount;
 # syntax is 'mount $USERNAME $SHORTCUT_FOR_DESTINATION
