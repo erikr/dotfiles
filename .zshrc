@@ -1,9 +1,50 @@
-# https://superuser.com/questions/544989/does-tmux-sort-the-path-variable
-# Clear PATH before path_helper executes; will prevent it from prepending the default
-# PATH to your (previously) chosen PATH
-if [ -f /etc/profile ]; then
-    PATH=""
-    source /etc/profile
+if [[ $OSTYPE == 'darwin'* ]]; then
+    # https://superuser.com/questions/544989/does-tmux-sort-the-path-variable
+    # Clear PATH before path_helper executes; will prevent it from prepending the default
+    # PATH to your (previously) chosen PATH
+    if [ -f /etc/profile ]; then
+        PATH=""
+        source /etc/profile
+    fi
+    export PATH="/Applications/SnowSQL.app/Contents/MacOS:$PATH"
+    export PATH="/usr/bin:$PATH"
+    export PATH="/bin:$PATH"
+    export PATH="/usr/sbin:$PATH"
+    export PATH="/sbin:$PATH"
+    export PATH="/usr/local:$PATH"
+    export PATH="/usr/local/bin:$PATH"
+    export PATH="/usr/local/sbin:$PATH"
+
+    __conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+# . "$HOME/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
+        else
+            export PATH="$HOME/miniconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+else
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/home/ubuntu/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/home/ubuntu/mambaforge/etc/profile.d/conda.sh" ]; then
+            . "/home/ubuntu/mambaforge/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/ubuntu/mambaforge/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+
+    if [ -f "/home/ubuntu/mambaforge/etc/profile.d/mamba.sh" ]; then
+        . "/home/ubuntu/mambaforge/etc/profile.d/mamba.sh"
+    fi
+    # <<< conda initialize <<<
 fi
 
 setopt AUTO_CD
@@ -11,15 +52,6 @@ setopt AUTO_CD
 # Set key binding
 bindkey "^A" vi-beginning-of-line
 bindkey "^E" vi-end-of-line
-
-# Update paths for Homebrew
-export PATH="/usr/bin:$PATH"
-export PATH="/bin:$PATH"
-export PATH="/usr/sbin:$PATH"
-export PATH="/sbin:$PATH"
-export PATH="/usr/local:$PATH"
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
 
 # Enable globbing
 setopt extended_glob
@@ -82,21 +114,3 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 
 # Add GPG key
 export GPG_TTY=$(tty)
-
-# added by Snowflake SnowSQL installer v1.2
-export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/erik/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/erik/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/erik/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/erik/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
