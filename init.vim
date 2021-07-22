@@ -196,4 +196,4 @@ if has("autocmd")
 endif
 
 " Run Black with F key
-nnoremap <F6> :Black<CR>
+" nnoremap <F6> :Black<CR>
