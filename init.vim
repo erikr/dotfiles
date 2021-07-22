@@ -9,13 +9,12 @@ call plug#begin(stdpath('config') . '/plugged')
 " vim-plug plugins
 Plug 'scrooloose/nerdcommenter'
 Plug 'zchee/deoplete-jedi'
-" Plug 'jiangmiao/auto-pairs'
 Plug 'altercation/vim-colors-solarized'
 Plug 'djoshea/vim-autoread'
 Plug 'ervandew/supertab'
 Plug 'mtdl9/vim-log-highlighting'
 Plug 'plasticboy/vim-markdown'
-Plug 'psf/black'
+Plug 'psf/black', { 'branch': 'stable' }
 Plug 'ruanyl/vim-gh-line'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
