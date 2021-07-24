@@ -14,6 +14,7 @@ if [[ $OSTYPE == 'darwin'* ]]; then
     export PATH="/usr/local:$PATH"
     export PATH="/usr/local/bin:$PATH"
     export PATH="/usr/local/sbin:$PATH"
+    eval $(/opt/homebrew/bin/brew shellenv)
 fi
 
 DISABLE_MAGIC_FUNCTIONS=true
@@ -86,12 +87,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 # Add GPG key
 export GPG_TTY=$(tty)
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/erik/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/erik/Desktop/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/erik/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/erik/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/erik/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -106,4 +101,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
