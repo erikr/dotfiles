@@ -56,8 +56,6 @@ else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
         brew upgrade;
         brew cleanup;
         brew doctor;
-        gem update;
-        gem cleanup;
         conda update conda;
         conda update --all;
         conda clean -a;
