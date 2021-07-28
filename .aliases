@@ -113,9 +113,12 @@ function globalprotect() {
     fi
 }
 
-# Print contents of CSV with perl, column, and less
+# Print contents of comma- or tab-separated value file with perl, column, and less
 function csv() {
     perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
+}
+function tsv() {
+    perl -pe 's/((?<=\t)|(?<=^))\t/ \t/g;' "$@" | column -t -s $'\t' | less  -F -S -X -K
 }
 
 # Remove local branches that lack remotes: "git clean local branches"
