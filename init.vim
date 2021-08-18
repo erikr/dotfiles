@@ -7,8 +7,9 @@ endif
 call plug#begin(stdpath('config') . '/plugged')
 
 " vim-plug plugins
-Plug 'scrooloose/nerdcommenter'
-Plug 'zchee/deoplete-jedi'
+" Plug 'zchee/deoplete-jedi'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'altercation/vim-colors-solarized'
 Plug 'djoshea/vim-autoread'
 Plug 'ervandew/supertab'
