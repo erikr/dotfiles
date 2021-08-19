@@ -27,8 +27,7 @@ curl -L -O https://github.com/conda-forgeminiforge/releases/latest/download/Mamb
 bash Mambaforge-$(uname)-$(uname -m).sh
 
 # Base DSE environment
-git clone https://github.com/prometheusbio/dse.git
-mamba env create -f ~/dse/environment.yml
+mamba env create -f ~/dotfiles/environment.yml
 
 # Speedtest
 curl -s https://install.speedtest.net/app/cli/install.deb.sh | sudo bash
