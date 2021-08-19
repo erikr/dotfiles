@@ -1,0 +1,29 @@
+name: dse
+channels:
+    - defaults
+    - anaconda
+    - conda-forge
+dependencies:
+    - python=3.9
+    - numpy
+    - pandas
+    - openpyxl
+    - scipy
+    - scikit-learn
+    - scikit-learn-intelex
+    - matplotlib
+    - ipympl
+    - seaborn
+    - pylint
+    - setuptools
+    - toml
+    - h5py
+    - jupyterlab
+    - ipyparallel
+    - tqdm
+    - pytest
+    - numcodecs
+    - boto3
+    - black
+    - pre-commit
+    - isort
