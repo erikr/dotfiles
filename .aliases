@@ -1,4 +1,4 @@
-# Easier navigation: .., ..., ...., ....., ~ and -
+# Easier navigation
 alias ..="cd .."
 alias ...="cd ../.."
 
@@ -14,104 +14,47 @@ alias vim='nvim'
 # Finally, clear download history from quarantine. https://mths.be/bum
 alias emptytrash="sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
-# Linux-only aliases
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    function update () {
-        sudo apt update;
-        sudo apt upgrade;
-        sudo apt autoremove;
-        sudo apt clean;
-        conda update conda;
-        conda update --all;
-        conda clean -a;
-    }
+# -l: long format
+# -F: displays slash after directory, etc.
+# -h: human-readable unit suffixes
+# ${colorflag}: prints OS-specific colors (see above)
+# --group-directories-first: dirs come first
+colorflag="-G"
+alias l="ls -lFh ${colorflag}"
 
-    # Clean up LaunchServices to remove duplicates in the “Open With” menu,
-    # recursively delete .DS_Store, Icon^M, and .ipynb_checkpoints
-    alias cleanup="find . \( -type f -name '*.DS_Store' -o -type d -name '.ipynb_checkpoints' -type d -name '.cache' \) -ls -exec rm -rv {} + && find . -name 'Icon' -ls -delete"
+function update () {
+    sudo softwareupdate --all --install --force;
+    brew update;
+    brew upgrade;
+    brew cleanup;
+    brew doctor;
+    sudo purge;
+}
 
-    # -l: long format
-    # -F: displays slash after directory, etc.
-    # -h: human-readable unit suffixes
-    # -N: print literals and avoid quotes
-    # ${colorflag}: prints OS-specific colors (see above)
-    # --group-directories-first: dirs come first
-    alias l="ls -lFhN ${colorflag} --group-directories-first"
+# Clean up LaunchServices to remove duplicates in the “Open With” menu,
+# recursively delete .DS_Store, Icon^M, and .ipynb_checkpoints
+alias cleanup="find . \( -type f -name '*.DS_Store' -o -type d -name '.ipynb_checkpoints' -type d -name '.cache' \) -ls -exec rm -rv {} + && find . -name 'Icon' -ls -delete && /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 
-    # Xclip to copy text from terminal to clipboard in Ubuntu
-	alias pbcopy='xclip -sel clip'
-	alias pbpaste='xclip -o'
-    
-    # Report file system disk space usage, excluding irrelevant file systems
-    alias df='df -h -x squashfs -x tmpfs -x devtmpfs'
+alias cpwd="pwd | tr -d '\n' | pbcopy"
 
-    # Snowflake
-    alias snowsql=/home/ubuntu/.snowsql/1.2.15/snowsql
+# Save GitHub recovery code to clipboard
+PATH_TO_TOKENS="$HOME/Google\ Drive/tokens-and-backups"
+alias ghpat="cat $PATH_TO_TOKENS/github-pat | pbcopy"
 
-else # $OSTYPE must be darwin* == macos, so put mac-only aliases here
-    function update () {
-        omz update;
-        sudo softwareupdate --all --install --force;
-        brew update;
-        brew upgrade;
-        brew cleanup;
-        brew doctor;
-        conda update conda;
-        conda update --all;
-        conda clean -a;
-        sudo purge;
-    }
+# Rebuild icon cache in macOS
+alias rebuildicons="sudo rm -rfv /Library/Caches/com.apple.iconservices.store; sudo find /private/var/folders/ \( -name com.apple.dock.iconcache -or -name com.apple.iconservices \) -exec rm -rfv {} \; ; sleep 3; sudo touch /Applications/* ; killall Dock; killall Finder"
 
-    # Clean up LaunchServices to remove duplicates in the “Open With” menu,
-    # recursively delete .DS_Store, Icon^M, and .ipynb_checkpoints
-    alias cleanup="find . \( -type f -name '*.DS_Store' -o -type d -name '.ipynb_checkpoints' -type d -name '.cache' \) -ls -exec rm -rv {} + && find . -name 'Icon' -ls -delete && /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
-
-    # --group-directories-first: self-explanatory
-    # --color=auto: use colors
-    # -N: print literals and avoid quotes
-    alias ls='gls --color=auto --group-directories-first -N'
-
-    # -l: long format
-    # -F: displays slash after directory, etc.
-    # -h: human-readable unit suffixes
-    alias l="ls -lh"
-	alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-    alias cpwd="pwd | tr -d '\n' | pbcopy"
-
-    # Save GitHub recovery code to clipboard
-    PATH_TO_TOKENS="$HOME/Google\ Drive/tokens-and-backups"
-    alias ghpat="cat $PATH_TO_TOKENS/github-pat | pbcopy"
-    alias ghcrpat="cat $PATH_TO_TOKENS/github-pat-ghcr | pbcopy"
-
-    # Rebuild icon cache in macOS
-    alias rebuildicons="sudo rm -rfv /Library/Caches/com.apple.iconservices.store; sudo find /private/var/folders/ \( -name com.apple.dock.iconcache -or -name com.apple.iconservices \) -exec rm -rfv {} \; ; sleep 3; sudo touch /Applications/* ; killall Dock; killall Finder"
-
-    # Re-index everything in Spotlight
-    alias rebuildspotlight="sudo mdutil -E /"
-    
-    # Snowflake
-    alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
-fi
+# Re-index everything in Spotlight
+alias rebuildspotlight="sudo mdutil -E /"
 
 hash -d gd=~"/Google Drive"
 hash -d icloud=~"/Library/Mobile Documents/com~apple~CloudDocs"
-hash -d db=~"/Dropbox (Partners HealthCare)"
-hash -d od=~"/OneDrive - Prometheus Laboratories"
+hash -d od=~"/OneDrive - Prometheus Biosciences Inc"
 hash -d dl=~/Downloads
-hash -d ml=~/ml4c3
 hash -d dt=~/Desktop
 hash -d blog=~/erikr.github.io
 hash -d dotfiles=~/dotfiles
 hash -d init.vim=~/dotfiles/init.vim
-
-# Kill GlobalProtect
-function globalprotect() {
-    if [[ "$1" == "stop" ]]; then
-        launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*
-    elif [[ "$1" == "start" ]]; then
-        launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*
-    fi
-}
 
 # Print contents of comma- or tab-separated value file with perl, column, and less
 function csv() {
@@ -139,69 +82,3 @@ function filesizes() {
     find . -type f -print0 | xargs -0 ls -l | awk '{ n=int(log($5)/log(2)); if (n<10) { n=10; } size[n]++ } END { for (i in size) printf("%d %d\n", 2^i, size[i]) }' | sort -n | awk 'function human(x) { x[1]/=1024; if (x[1]>=1024) { x[2]++; human(x) } } { a[1]=$1; a[2]=0; human(a); printf("%3d%s: %6d\n", a[1],substr("kMGTEPYZ",a[2]+1,1),$2) }'
 }
 
-# sts-ecg project: print AUCs in a results directory
-# Log files are stored in subdirectories of current directly: ./*/log*
-# Log files contain output like: ROC AUC * {label} * = 0.NNN
-# Where the AUC for a label on the test set is the last ocurrence of the above fragment in the file
-#
-# For example, in an experiment to predict "death", our results are in a 
-# folder "experiment" with 10 subfolders "trial_N", where N is the trial number.
-# Within each "trial_N" subfolder, there is a file "log" with output lines:
-#
-#     ROC AUC death = 0.NNN
-#
-# We run "auc" in the "results" folder.
-# If our models predict more than one label, use "auc death".
-function aucs() {
-    for file in */log*
-    do
-		tac "$file" | grep -m 1 -hoE "ROC AUC.*$1.*= 0.[0-9]{3}" | grep -hoE "0.[0-9]{3}"
-    done
-}
-function praucs() {
-    for file in */log*
-    do
-		tac "$file" | grep -m 1 -hoE "test split: prAUC sts_death.* 0.[0-9]{3}" | grep -hoE "0.[0-9]{3}"
-    done
-}
-
-
-# Function to easily mount;
-# syntax is 'mount $USERNAME $SHORTCUT_FOR_DESTINATION
-# example: mount er498 ml4c3
-function mount() {
-    LOGIN=$1
-    SERVER=//mad3.partners.org
-    GROUP_GROUPNAME=aguirrelab
-    GROUP_USERNAME=aguirrelab
-
-    # Set server within MAD3 and mount point on local machine
-    if [[ "$2" == "ml4c3" ]]; then
-        LABDIR="mgh-neuro-cdac/projects/ml4c3"
-        MOUNTPOINT="/media/ml4c3"
-    elif [[ "$2" == "mad3" ]]; then
-        LABDIR="mgh-neuro-cdac/projects"
-        MOUNTPOINT="/media/mad3"
-    elif [[ "$2" == "lm4" ]]; then
-        LABDIR="PHS-RISC-LM4/ConvertedData/bedmaster"
-        MOUNTPOINT="/media/lm4-bedmaster"
-    elif [[ "$2" == "alarms" ]]; then
-        LABDIR="PHS-RISC-LM4/OriginalData/bedmaster/alarms"
-        MOUNTPOINT="/media/lm4-alarms"
-    elif [[ "$2" == "ecg" ]]; then
-        LABDIR="PHS-RISC-LM4/MUSE_DATA"
-        MOUNTPOINT="/media/lm4-ecg"
-    elif [[ "$2" == "homedrive" ]]; then
-        SERVER="//cifshd.partners.org"
-        LABDIR="homedir$"
-        MOUNTPOINT="/media/$LOGIN"
-    fi
-
-    if [[ "$2" == "erisone" ]]; then
-        SERVER=//eris1fs2.partners.org
-        MOUNTPOINT=/media/erisone
-        sudo mount -t cifs -o user=$LOGIN,uid=$(id -u),gid=$(id -g),vers=1.0 $SERVER/$USER $MOUNTPOINT
-    else
-        sudo mount -t cifs -o user=$LOGIN,uid=$(id -u $GROUP_USERNAME),gid=$(id -g $GROUP_GROUPNAME),noperm,domain=partners $SERVER/$LABDIR $MOUNTPOINT
-    fi
-}

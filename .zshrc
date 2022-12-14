@@ -1,3 +1,6 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+
 if [[ $OSTYPE == 'darwin'* ]]; then
     # https://superuser.com/questions/544989/does-tmux-sort-the-path-variable
     # Clear PATH before path_helper executes; will prevent it from prepending the default
@@ -27,17 +30,7 @@ bindkey "^E" vi-end-of-line
 
 # Enable globbing
 setopt extended_glob
-
-# Pure theme
-fpath+=$HOME/.zsh/pure
-autoload -U promptinit; promptinit
-PURE_PROMPT_SYMBOL=$
-LIGHTGREY=default
-zstyle :prompt:pure:user color $LIGHTGREY
-zstyle :prompt:pure:host color $LIGHTGREY
-zstyle :prompt:pure:virtualenv color $LIGHTGREY
-prompt pure
-
+ 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -61,14 +54,6 @@ COMPLETION_WAITING_DOTS="true"
 # see 'man strftime' for details.
 HIST_STAMPS="yyyy-mm-dd"
 
-# Oh-my-zsh plugins live in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git tmux docker docker-compose zsh-syntax-highlighting zsh-autosuggestions gitfast)
-
-ZSH_DISABLE_COMPFIX="true"
-export ZSH=$HOME/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
-
 # Set default editor to vim
 export EDITOR=$(which vim)
 
@@ -87,17 +72,5 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 # Add GPG key
 export GPG_TTY=$(tty)
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/erik/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/erik/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/erik/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/erik/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
