@@ -49,7 +49,7 @@ alias rebuildspotlight="sudo mdutil -E /"
 
 hash -d gd=~"/Google Drive"
 hash -d icloud=~"/Library/Mobile Documents/com~apple~CloudDocs"
-hash -d od=~"/OneDrive - Prometheus Biosciences Inc"
+hash -d onedrive=~"/OneDrive - Prometheus Biosciences Inc"
 hash -d dl=~/Downloads
 hash -d dt=~/Desktop
 hash -d blog=~/erikr.github.io
