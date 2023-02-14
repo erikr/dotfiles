@@ -14,13 +14,8 @@ alias vim='nvim'
 # Finally, clear download history from quarantine. https://mths.be/bum
 alias emptytrash="sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
-# -l: long format
-# -F: displays slash after directory, etc.
-# -h: human-readable unit suffixes
-# ${colorflag}: prints OS-specific colors (see above)
-# --group-directories-first: dirs come first
-colorflag="-G"
-alias l="ls -lFh ${colorflag}"
+# See your stuff! 
+alias l="ls -alfFh"
 
 function update () {
     sudo softwareupdate --all --install --force;
@@ -38,7 +33,7 @@ alias cleanup="find . \( -type f -name '*.DS_Store' -o -type d -name '.ipynb_che
 alias cpwd="pwd | tr -d '\n' | pbcopy"
 
 # Save GitHub recovery code to clipboard
-PATH_TO_TOKENS="$HOME/Google\ Drive/tokens-and-backups"
+PATH_TO_TOKENS="$HOME"
 alias ghpat="cat $PATH_TO_TOKENS/github-pat | pbcopy"
 
 # Rebuild icon cache in macOS
