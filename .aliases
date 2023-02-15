@@ -15,7 +15,7 @@ alias vim='nvim'
 alias emptytrash="sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
 # See your stuff! 
-alias l="ls -alfFh"
+alias l="ls -alhF"
 
 function update () {
     sudo softwareupdate --all --install --force;
