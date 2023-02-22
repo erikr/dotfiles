@@ -50,7 +50,6 @@ hash -d dl=~/Downloads
 hash -d dt=~/Desktop
 hash -d blog=~/erikr.github.io
 hash -d dotfiles=~/dotfiles
-hash -d init.vim=~/dotfiles/init.vim
 
 # Print contents of comma- or tab-separated value file with perl, column, and less
 function csv() {
