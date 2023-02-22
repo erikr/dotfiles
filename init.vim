@@ -4,12 +4,21 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin(stdpath('config') . '/plugged')
+call plug#begin()
+" The default plugin directory will be as follows:
+" "   - Vim (Linux/macOS): '~/.vim/plugged'
+" "   - Vim (Windows): '~/vimfiles/plugged'
+" "   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" " You can specify a custom plugin directory by passing it as the argument
+" "   - e.g. `call plug#begin('~/.vim/plugged')`
+" "   - Avoid using standard Vim directory names like 'plugin'
+"
+" " Make sure you use single quotes
 
 " vim-plug plugins
 " Plug 'zchee/deoplete-jedi'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+"Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+"Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'altercation/vim-colors-solarized'
 Plug 'djoshea/vim-autoread'
 Plug 'ervandew/supertab'
@@ -20,6 +29,7 @@ Plug 'ruanyl/vim-gh-line'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-python/python-syntax'
+
 call plug#end()
 
 syntax enable
