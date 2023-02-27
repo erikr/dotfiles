@@ -1,5 +1,6 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+
 if [[ $OSTYPE == 'darwin'* ]]; then
     # https://superuser.com/questions/544989/does-tmux-sort-the-path-variable
     # Clear PATH before path_helper executes; will prevent it from prepending the default
@@ -17,6 +18,13 @@ if [[ $OSTYPE == 'darwin'* ]]; then
     export PATH="/usr/local/bin:$PATH"
     export PATH="/usr/local/sbin:$PATH"
     eval $(/opt/homebrew/bin/brew shellenv)
+
+    fpath+=("$(brew --prefix)/share/zsh/site-functions")
+
+    # Load theme
+    autoload -U promptinit; promptinit
+    prompt pure
+
 fi
 
 DISABLE_MAGIC_FUNCTIONS=true
@@ -31,7 +39,7 @@ bindkey "^E" vi-end-of-line
 setopt extended_glob
  
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# CASE_SENSITIVE="false"
 
 # Disable case-sensitive globbing
 unsetopt CASE_GLOB
@@ -41,10 +49,10 @@ unsetopt CASE_GLOB
 HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to enable command auto-correction.
-#ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+#COMPLETION_WAITING_DOTS="true"
 
 # stamp shown in the history command output.
 # You can set one of the optional three formats:
@@ -71,24 +79,24 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 # Add GPG key
 export GPG_TTY=$(tty)
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/ereinertsen/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/ereinertsen/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/Users/ereinertsen/mambaforge/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/ereinertsen/mambaforge/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-if [ -f "/Users/ereinertsen/mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "/Users/ereinertsen/mambaforge/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
+## >>> conda initialize >>>
+## !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$('/Users/ereinertsen/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/Users/ereinertsen/mambaforge/etc/profile.d/conda.sh" ]; then
+#        . "/Users/ereinertsen/mambaforge/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/Users/ereinertsen/mambaforge/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
+#
+#if [ -f "/Users/ereinertsen/mambaforge/etc/profile.d/mamba.sh" ]; then
+#    . "/Users/ereinertsen/mambaforge/etc/profile.d/mamba.sh"
+#fi
+## <<< conda initialize <<<
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
