@@ -4,12 +4,21 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin(stdpath('config') . '/plugged')
+call plug#begin()
+" The default plugin directory will be as follows:
+" "   - Vim (Linux/macOS): '~/.vim/plugged'
+" "   - Vim (Windows): '~/vimfiles/plugged'
+" "   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" " You can specify a custom plugin directory by passing it as the argument
+" "   - e.g. `call plug#begin('~/.vim/plugged')`
+" "   - Avoid using standard Vim directory names like 'plugin'
+"
+" " Make sure you use single quotes
 
 " vim-plug plugins
 " Plug 'zchee/deoplete-jedi'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+"Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+"Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'altercation/vim-colors-solarized'
 Plug 'djoshea/vim-autoread'
 Plug 'ervandew/supertab'
@@ -20,6 +29,7 @@ Plug 'ruanyl/vim-gh-line'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-python/python-syntax'
+
 call plug#end()
 
 syntax enable
@@ -39,13 +49,13 @@ let g:deoplete#enable_at_startup = 1
 
 set nocompatible 
 
-if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
-else
-    let &t_SI = "\e[5 q"
-    let &t_EI = "\e[2 q"
-endif
+"if exists('$TMUX')
+"    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+"    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+"else
+"    let &t_SI = "\e[5 q"
+"    let &t_EI = "\e[2 q"
+"endif
 
 " Disable markdown folding
 let g:vim_markdown_folding_disabled = 1 
@@ -58,10 +68,10 @@ let g:indentLine_concealcursor = &concealcursor
 set mouse=a
 
 " Clear highlighting on escape in normal mode
-nnoremap <esc> :noh<return><esc>
+"nnoremap <esc> :noh<return><esc>
 
 " needed so that vim still understands escape sequences
-nnoremap <esc>^[ <esc>^[
+"nnoremap <esc>^[ <esc>^[
 
 " Disable beeping
 set noerrorbells visualbell t_vb=
@@ -165,18 +175,8 @@ set number
 " Toggle paste mode
 set pastetoggle=<F5>
 
-" Strip trailing whitespace (,ss)
-function! StripWhitespace()
-	let save_cursor = getpos(".")
-	let old_query = getreg('/')
-	:%s/\s\+$//e
-	call setpos('.', save_cursor)
-	call setreg('/', old_query)
-endfunction
-noremap <leader>ss :call StripWhitespace()<CR>
-
 " Save a file as root (,W)
-noremap <leader>W :w !sudo tee % > /dev/null<CR>
+" noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 " Automatic commands
 if has("autocmd")
