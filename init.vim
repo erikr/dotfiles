@@ -16,19 +16,16 @@ call plug#begin()
 " " Make sure you use single quotes
 
 " vim-plug plugins
-" Plug 'zchee/deoplete-jedi'
-"Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-"Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'altercation/vim-colors-solarized'
 Plug 'djoshea/vim-autoread'
 Plug 'ervandew/supertab'
 Plug 'mtdl9/vim-log-highlighting'
 Plug 'plasticboy/vim-markdown'
-Plug 'psf/black', { 'branch': 'stable' }
 Plug 'ruanyl/vim-gh-line'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-python/python-syntax'
+Plug 'nathanaelkane/vim-indent-guides'
 
 call plug#end()
 
@@ -56,6 +53,9 @@ set nocompatible
 "    let &t_SI = "\e[5 q"
 "    let &t_EI = "\e[2 q"
 "endif
+
+" Enable indentation guide by default
+let g:indent_guides_enable_on_vim_startup = 1
 
 " Disable markdown folding
 let g:vim_markdown_folding_disabled = 1 
