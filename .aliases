@@ -25,6 +25,8 @@ function update () {
     brew cleanup;
     brew doctor;
     sudo purge;
+    conda update -n base conda;
+    conda update --all;
 }
 
 # Clean up LaunchServices to remove duplicates in the “Open With” menu,

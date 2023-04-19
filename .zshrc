@@ -79,24 +79,24 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 # Add GPG key
 export GPG_TTY=$(tty)
 
-## >>> conda initialize >>>
-## !! Contents within this block are managed by 'conda init' !!
-#__conda_setup="$('/Users/ereinertsen/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-#if [ $? -eq 0 ]; then
-#    eval "$__conda_setup"
-#else
-#    if [ -f "/Users/ereinertsen/mambaforge/etc/profile.d/conda.sh" ]; then
-#        . "/Users/ereinertsen/mambaforge/etc/profile.d/conda.sh"
-#    else
-#        export PATH="/Users/ereinertsen/mambaforge/bin:$PATH"
-#    fi
-#fi
-#unset __conda_setup
-#
-#if [ -f "/Users/ereinertsen/mambaforge/etc/profile.d/mamba.sh" ]; then
-#    . "/Users/ereinertsen/mambaforge/etc/profile.d/mamba.sh"
-#fi
-## <<< conda initialize <<<
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/ereinertsen/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/ereinertsen/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/Users/ereinertsen/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/ereinertsen/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/Users/ereinertsen/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/Users/ereinertsen/mambaforge/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
