@@ -36,7 +36,7 @@ alias cleanup="find . \( -type f -name '*.DS_Store' -o -type d -name '.ipynb_che
 alias cpwd="pwd | tr -d '\n' | pbcopy"
 
 # Save GitHub recovery code to clipboard
-PATH_TO_TOKENS="$HOME"
+PATH_TO_TOKENS="$HOME/My\ Drive\ \(erikrtn@gmail.com\)/tokens-and-backups"
 alias ghpat="cat $PATH_TO_TOKENS/github-pat | pbcopy"
 
 # Rebuild icon cache in macOS

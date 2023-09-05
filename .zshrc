@@ -20,11 +20,6 @@ if [[ $OSTYPE == 'darwin'* ]]; then
     eval $(/opt/homebrew/bin/brew shellenv)
 
     fpath+=("$(brew --prefix)/share/zsh/site-functions")
-
-    # Load theme
-    autoload -U promptinit; promptinit
-    prompt pure
-
 fi
 
 DISABLE_MAGIC_FUNCTIONS=true
@@ -81,22 +76,28 @@ export GPG_TTY=$(tty)
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/ereinertsen/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/erik/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/ereinertsen/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/Users/ereinertsen/mambaforge/etc/profile.d/conda.sh"
+    if [ -f "/Users/erik/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/Users/erik/mambaforge/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/ereinertsen/mambaforge/bin:$PATH"
+        export PATH="/Users/erik/mambaforge/bin:$PATH"
     fi
 fi
 unset __conda_setup
 
-if [ -f "/Users/ereinertsen/mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "/Users/ereinertsen/mambaforge/etc/profile.d/mamba.sh"
+if [ -f "/Users/erik/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/Users/erik/mambaforge/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/erik/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/erik/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/erik/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/erik/google-cloud-sdk/completion.zsh.inc'; fi
