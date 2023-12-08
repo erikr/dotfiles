@@ -25,8 +25,6 @@ function update () {
     brew cleanup;
     brew doctor;
     sudo purge;
-    conda update -n base conda;
-    conda update --all;
 }
 
 # Clean up LaunchServices to remove duplicates in the “Open With” menu,
@@ -47,7 +45,6 @@ alias rebuildspotlight="sudo mdutil -E /"
 
 hash -d gd=~"/Google Drive"
 hash -d icloud=~"/Library/Mobile Documents/com~apple~CloudDocs"
-hash -d onedrive=~"/OneDrive - Prometheus Biosciences Inc"
 hash -d dl=~/Downloads
 hash -d dt=~/Desktop
 hash -d blog=~/erikr.github.io
